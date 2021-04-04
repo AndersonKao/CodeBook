@@ -16,12 +16,12 @@ int main(){
     while(pq.size()){
         con cur = pq.top();
         pq.pop();
+        if(dis[cur.second] != cur.first)
+            continue;
         for(auto it: Graph[cur.second]){
-
-            if(dis[it.second] != it.first) continue;
             dis[it.second] = min(dis[it.second], cur.first + it.first);
-            pq.push(con(dis[it.second], it.second));
-        }
+            pq.emplace(dis[it.second], it.second);
+        }         
     }
     return 0;
 }
