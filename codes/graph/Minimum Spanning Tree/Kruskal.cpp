@@ -20,7 +20,7 @@ int kruskal(int V, vector<tuple<int, int, int>> E) // save all edges into E, ins
     for (auto e : E)
     {
         int w, u, v; // w for start, u for des, v for val
-        tie(w, u, v) = E;
+        tie(w, u, v) = e;
         if (dsu.find(u) == dsu.find(v))
             continue;
         dsu.merge(u, v);

@@ -4,6 +4,8 @@
         "utility": "cpp",
         "vector": "cpp",
         "tuple": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "deque": "cpp",
+        "list": "cpp"
     }
 }

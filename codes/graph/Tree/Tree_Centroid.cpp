@@ -27,3 +27,29 @@ pair<int, int> Tree_Centroid(int v, int pa)
     // the min one is the tree centroid
     return res;
 }
+
+// Tree_Centroid2
+vector<int> V[10005];
+int N;
+int center, csize;
+int dfs(int v, int fa)
+{
+    int sz = 1;
+    int maxsub = 0;
+
+    for(int u:V[v])
+    {
+        if (u==fa)continue;
+        int sub = dfs(u, v);
+        maxsub = max(maxsub, sub);
+        sz += sub;
+    }
+    maxsub = max(maxsub, N-sz);
+
+    if (maxsub<csize)
+    {
+        center = v;
+        csize = maxsub;
+    }
+    return sz;
+}

@@ -1,6 +1,6 @@
-using i64 = unsigned long long;
+using i64 = long long;
 #define maxn 300005
-i64 fact[maxn], tcaf[maxn];
+i64 fact[MAXN], tcaf[MAXN];
 
 #define P 998244353
 #define REP1(i, n) for (int i = 1; i <= (int)(n); ++i)

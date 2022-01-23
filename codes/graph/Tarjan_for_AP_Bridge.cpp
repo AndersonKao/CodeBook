@@ -28,20 +28,18 @@ class tarjan{
         G[u].push_back(v);
         G[v].push_back(u);
     }
-    void DFS(int v, int pa)
-    { // 使 用 DFS(v,v) 來 呼 叫 函 數
+    void DFS(int v, int pa){ // init: call DFS(v,v)
         D[v] = L[v] = timestamp++;
         int Childcount = 0;
         bool isAP = false;
         for(int w: G[v]){
             if(w == pa)
                 continue;
-            if(!D[w])
-            { // 用 D[w] = 0 當 作 沒 走 過
+            if(!D[w]){ // 用 D[w] == 0 if not visited
                 DFS(w, v);
                 Childcount++;
                 if(D[v] <= L[w])
-                    isAP = true; // 結 論 2 對於除了 r 點以外的所有點 v，v 點在 G 上為 AP 的充要條件為其在 T 中至少有一個子節點 w 滿足 D(v) ≤ L(w)
+                    isAP = true; // 結 論 2 對於除了 root 點以外的所有點 v，v 點在 G 上為 AP 的充要條件為其在 T 中至少有一個子節點 w 滿足 D(v) ≤ L(w)
                 if(D[v] < L[w])
                     edgeBridge.emplace_back(v,w);// 結 論 3 對於包含 r 在內的所有點 v 和 v 在 T 中的子節點 w，邊 e(v, w) 在圖 G 中為bridge 的充要條件為 D(v) < L(w)。
                 L[v] = min(L[v], L[w]);

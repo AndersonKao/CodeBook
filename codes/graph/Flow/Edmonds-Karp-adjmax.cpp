@@ -3,11 +3,11 @@
 #include <queue>
 using namespace std;
 #define maxn 100
-typedef int Graph[maxn][maxn];  // adjacency matrix
+typedef int Graph[MAXN][MAXN];  // adjacency matrix
 Graph C, F, R;  // 容量上限、流量、剩餘容量
-bool visit[maxn]; // BFS經過的點
-int path[maxn];   // BFS tree
-int flow[maxn];   // 源點到各點的流量瓶頸
+bool visit[MAXN]; // BFS經過的點
+int path[MAXN];   // BFS tree
+int flow[MAXN];   // 源點到各點的流量瓶頸
  
 int BFS(int s, int t)   // 源點與匯點
 {

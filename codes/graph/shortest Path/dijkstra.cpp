@@ -10,17 +10,16 @@ using namespace std;
 vector<vector<con>> Graph; //
 vector<int> dis; // distance;
 int main(){
-    priority_queue<con> pq;
+    priority_queue<con, vector<con>, greater<con>> pq;
     pq.emplace(con(dis[0] = 0, 0));
-
     while(pq.size()){
         con cur = pq.top();
         pq.pop();
-        if(dis[cur.second] != cur.first)
-            continue;
         for(auto it: Graph[cur.second]){
-            dis[it.second] = min(dis[it.second], cur.first + it.first);
-            pq.emplace(dis[it.second], it.second);
+            if(cur.first + it.first < dis[it.second]){
+                dis[it.second] = cur.first + it.first;
+                pq.emplace(dis[it.second], it.second);
+            }
         }         
     }
     return 0;

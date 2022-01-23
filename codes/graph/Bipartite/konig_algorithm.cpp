@@ -2,6 +2,7 @@
 #include <cstring>
 using namespace std;
 
+// V times DFS O(EV)
 vector<int> V[205];
 // V[i]記錄了左半邊可以配到右邊的那些點
 int match[205]; // A<=B

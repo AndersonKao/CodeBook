@@ -6,13 +6,13 @@
 #include <vector>
 using namespace std;
 // O(V^2E) O(VE) finding argument path
-// if unit capacity networe then O(min(V^3/2, E^1/2) E)
-// solving bipartite matching O(E V^1/2)
+// if unit capacity network then O(min(V^3/2, E^1/2) E)
+// solving bipartite matching O(E V^1/2) better than konig and flow(EV)
 #define maxn 101
 #define INT_MAX 10000000
-int End, dist[maxn];
-vector<tuple<int, int, int>> V[maxn];
-// 1st for node-index, 2nd for cap, 3nd for the index of the edge and the vector[u];
+int End, dist[MAXN];
+vector<tuple<int, int, int>> V[MAXN];
+// node-index, cap, the index of the reverse edge
 void addEdge(int u, int v, int c){
     V[u].emplace_back(v, c, V[v].size());
     V[v].emplace_back(u, 0, V[u].size() - 1);

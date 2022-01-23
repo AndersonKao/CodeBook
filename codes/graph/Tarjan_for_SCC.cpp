@@ -45,8 +45,8 @@ public:
             }else if(inSt[w])
             { /* w has been visited.
                 if we don't add this, the L[v] will think that v can back to node whose index less to v.
-                !inSt[w] is true that v -> w is a forward edge
-                opposite it's a cross edge
+                inSt[w] is true that v -> w is a cross edge
+                opposite it's a forward edge
             */
                 L[v] = min(L[v], D[w]); // why D[w] instead of L[w]??
             }

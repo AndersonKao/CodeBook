@@ -6,9 +6,9 @@ using namespace std;
 // O((V+E)F)
 #define maxn 101
 // remember to change used into the maxNode size -- kattis elementary math
-bool used[maxn];
+bool used[MAXN];
 int End;
-vector<int> V[maxn];
+vector<int> V[MAXN];
 vector<tuple<int, int>> E;
 
 // x=>y 可以流 C 
