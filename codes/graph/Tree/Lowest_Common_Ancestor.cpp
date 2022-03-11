@@ -16,7 +16,8 @@ int LCA(int u, int v)
     if (D[u] > D[v])
         swap(u, v);
     int s = D[v] - D[u]; // adjust D until D[v] = D[u]
-    for (int i = 0; i <= lgN; ++i)
+    
+    for (int i = 0; i <= lgN; ++i) // 調整他們到二進位數一樣
         if (s & (1 << i))
             v = P[v][i];
     if (u == v) 

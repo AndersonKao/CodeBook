@@ -22,7 +22,7 @@ int BFS(int s, int t)   // 源點與匯點
     while (!Q.empty())
     {
         int i = Q.front(); Q.pop();
-        for (int j=0; j<10; ++j)
+        for (int j=0; j<100; ++j)
             // 剩餘網路找擴充路徑
             if (!visit[j] && R[i][j] > 0)
             {

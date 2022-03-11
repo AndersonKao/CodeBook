@@ -1,14 +1,9 @@
-#include <algorithm>
-#include <cstring>
-#include <queue>
-#include <tuple>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 // O(V^2E) O(VE) finding argument path
 // if unit capacity network then O(min(V^3/2, E^1/2) E)
 // solving bipartite matching O(E V^1/2) better than konig and flow(EV)
-#define maxn 101
+#define MAXN 101
 #define INT_MAX 10000000
 int End, dist[MAXN];
 vector<tuple<int, int, int>> V[MAXN];
