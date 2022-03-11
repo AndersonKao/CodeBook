@@ -7,7 +7,7 @@ using namespace std;
 #define INT_MAX 10000000
 int End, dist[MAXN];
 vector<tuple<int, int, int>> V[MAXN];
-// node-index, cap, the index of the reverse edge
+// vertex-index, cap, the index of the reverse edge
 void addEdge(int u, int v, int c){
     V[u].emplace_back(v, c, V[v].size());
     V[v].emplace_back(u, 0, V[u].size() - 1);
