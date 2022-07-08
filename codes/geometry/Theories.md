@@ -6,4 +6,4 @@
 ### Pick's Theorem
 - $i$ = # of integer points interior the polygon
 - $b$ = # of integer points on its boundary.
-the area A = $A = i + b\div 2 - 1$
+the area A = $A = i + \frac{b}{2} - 1$
