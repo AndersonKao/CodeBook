@@ -94,7 +94,7 @@ struct Line
     T ori(const Point<T> p) const { return (ed - st) ^ (p - st); }
     int orint(const Point<T> p) const{
         T a = this->ori(p);
-        return (fcmp(a, 0.0), 0); // 1 on posi-side // -1 nega-side
+        return (fcmp(a, 0.0)); // 1 on posi-side // -1 nega-side
         // a little bit useless?
     }
     Line(const Point<T> x, const Point<T> y) : st(x), ed(y) {}
