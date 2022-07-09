@@ -62,7 +62,7 @@ struct Point
 template <class F>
 ostream &operator<<(ostream &os, const Point<F> &pt)
 {
-    return os << pt.x << " " << pt.y;
+    return os << "(" << pt.x << " " << pt.y << ")";
 }
 template <class F>
 istream &operator>>(istream &is, Point<F> &pt)
