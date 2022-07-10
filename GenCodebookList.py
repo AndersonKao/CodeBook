@@ -9,7 +9,8 @@ splitter = '\\' if sys.platform == "win32" else '/'
 
 RequireOptionDict = {
     ".cpp": "includecpp",
-    ".tex": "includetex"
+    ".tex": "includetex",
+    ".md": "markdownInput"
 }
 
 

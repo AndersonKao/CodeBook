@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.6.28)  10 JUL 2022 21:03
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.6.28)  10 JUL 2022 21:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -747,133 +747,32 @@ LaTeX Font Warning: Font shape `TU/consola.ttf(0)/m/it' undefined
 (Font)              using `TU/consola.ttf(0)/m/n' instead on input line 6.
 
 ) (./data_structure/segment_Tree.cpp) (./data_structure/disjointset.cpp)
-(./geometry/closest_point.cpp
-Overfull \hbox (0.25192pt too wide) in paragraph at lines 12--13
-[][][][][] 
- []
+(./geometry/closest_point.cpp [1
 
-) (./geometry/points.cpp [1
-
-]) (./geometry/lines.cpp)
-(./geometry/geometry_template.cpp [2]) (./geometry/cp_geometry..cpp [3])
-Underfull \hbox (badness 10000) in paragraph at lines 11--11
-|[]\TU/lmr/bx/n/14.4 geometry/ Con-
- []
-
-
-Overfull \hbox (11.19402pt too wide) in paragraph at lines 12--12
-|[]\TU/lmr/bx/n/12 Andrew’s_Monotone_Chain| 
- []
-
+]) (./geometry/points.cpp)
+(./geometry/lines.cpp) (./geometry/geometry_template.cpp [2])
+(./geometry/cp_geometry..cpp [3])
 (./geometry/Convex_Hull/Andrew's_Monotone_Chain.cpp)
-(./graph/Kosaraju_for_SCC.cpp) (./graph/Tarjan_for_BridgeCC.cpp)
-(./graph/Tarjan_for_AP_Bridge.cpp [4]) (./graph/Tarjan_for_SCC.cpp)
+(./graph/Kosaraju_for_SCC.cpp [4]) (./graph/Tarjan_for_BridgeCC.cpp)
+(./graph/Tarjan_for_AP_Bridge.cpp) (./graph/Tarjan_for_SCC.cpp [5])
 (./graph/Bipartite/konig_algorithm.cpp) (./graph/Bipartite/Kuhn-Munkres.cpp)
-(./graph/Flow/Ford_Fulkerson.cpp [5]) (./graph/Flow/Edmonds-Karp-adjmax.cpp)
-(./graph/Flow/Dinic_algorithm.cpp) (./graph/Flow/Edmonds_Karp_2.cpp [6])
+(./graph/Flow/Ford_Fulkerson.cpp [6]) (./graph/Flow/Edmonds-Karp-adjmax.cpp)
+(./graph/Flow/Dinic_algorithm.cpp) (./graph/Flow/Edmonds_Karp_2.cpp [7])
 (./graph/Flow/MinCostMaxFlow.cpp) (./graph/Matching/blossom_matching.cpp)
-Overfull \hbox (72.69629pt too wide) in paragraph at lines 29--29
+Overfull \hbox (4.77963pt too wide) in paragraph at lines 29--29
 |[]\TU/lmr/bx/n/14.4 graph/ Minimum_Spanning_Tree| 
  []
 
-(./graph/Minimum_Spanning_Tree/prim.cpp)
+[8] (./graph/Minimum_Spanning_Tree/prim.cpp)
 (./graph/Minimum_Spanning_Tree/Kruskal.cpp) (./graph/Shortest_Path/dijkstra.cpp
-[7]) (./graph/Shortest_Path/dijkstra-alrightchiu-version.cpp)
-(./graph/Shortest_Path/bellman-Ford.cpp
-Overfull \hbox (21.25214pt too wide) in paragraph at lines 24--25
-[][][][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (41.25214pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (53.85226pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (41.25214pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (66.4524pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (53.85226pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (58.0523pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (37.0521pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (53.85226pt too wide) in paragraph at lines 24--25
-[][][][] 
- []
-
-
-Overfull \hbox (32.85205pt too wide) in paragraph at lines 24--25
-[][]  
- []
-
-[8]) (./graph/Shortest_Path/Floyd-Warshall.cpp)
-(./graph/Shortest_Path/shortest-path_on_DAG.cpp [9])
-Overfull \hbox (14.29pt too wide) in paragraph at lines 39--39
-|[]\TU/lmr/bx/n/12 Lowest_Common_Ancestor| 
- []
-
-(./graph/Tree/Lowest_Common_Ancestor.cpp) (./graph/Tree/Tree_Centroid.cpp
-[10]) (./hashing/hashingVec.cpp) (./number_theory/Fib.cpp)
-(./number_theory/BigInterger.cpp) (./number_theory/gcds.cpp [11])
-(./number_theory/nCr.cpp) (./string/KMP.cpp)) [12] (./Codebook.toc
+) (./graph/Shortest_Path/dijkstra-alrightchiu-version.cpp [9])
+(./graph/Shortest_Path/bellman-Ford.cpp)
+(./graph/Shortest_Path/Floyd-Warshall.cpp [10])
+(./graph/Shortest_Path/shortest-path_on_DAG.cpp [11])
+(./graph/Tree/Lowest_Common_Ancestor.cpp) (./graph/Tree/Tree_Centroid.cpp)
+(./hashing/hashingVec.cpp [12]) (./number_theory/Fib.cpp)
+(./number_theory/BigInterger.cpp) (./number_theory/gcds.cpp [13])
+(./number_theory/nCr.cpp) (./string/KMP.cpp)) [14] (./Codebook.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -892,7 +791,7 @@ Overfull \hbox (11.46002pt too wide) in paragraph at lines 29--29
 \tf@toc=\write6
 \openout6 = `Codebook.toc'.
 
- [13] (./Codebook.aux)
+ [15] (./Codebook.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -900,10 +799,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  14013 strings out of 481804
  294125 string characters out of 5937876
- 1585985 words of memory out of 5000000
+ 1526985 words of memory out of 5000000
  30663 multiletter control sequences out of 15000+600000
  534181 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 51i,12n,67p,798b,2004s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,12n,67p,798b,2002s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Codebook.pdf (13 pages).
+Output written on Codebook.pdf (15 pages).

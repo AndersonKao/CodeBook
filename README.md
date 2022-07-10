@@ -16,4 +16,6 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 
 ## 2. TODO list
 
-1. 排版問題 
+1. 多餘的code
+2. 重複的code
+##### 
