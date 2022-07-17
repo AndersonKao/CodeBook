@@ -44,15 +44,15 @@ struct Point
     // cross operator
     bool operator==(const Point b) const
     {
-        if(std::is_integral<T>)
+        if(std::is_integral<T>::value)
             return x == b.x and y == b.y;
         return fcmp(x, b.x) == 0 && fcmp(y, b.y) == 0;
     }
     bool operator<(const Point b) const
     {
-        if(std::is_integral<T>)
+        if(std::is_integral<T>::value)
             return x == b.x ? y < b.y : x < b.x;
-        return fcmp(x, b.x) == 0 ? (fcmp(y, b.y) < 0 : fcmp(x, b.x) < 0);
+        return fcmp(x, b.x) == 0 ? (fcmp(y, b.y)) < 0 : (fcmp(x, b.x) < 0);
     } // 字 典 序
 
     Point operator-() const { return Point(-x, -y); }
@@ -75,14 +75,14 @@ istream &operator>>(istream &is, Point<F> &pt)
 }
 template <class F>
 bool collinearity(const Point<F>& p1, const Point<F>& p2, const Point<F>& p3){
-    if(std::is_integral<F>)
+    if(std::is_integral<F>::value)
         return (p1 - p3) ^ (p2 - p3) == 0;
     return fcmp((p1 - p3) ^ (p2 - p3), 0.0) == 0;
 }
 // check co-line first. properly
 template<class F>
 inline bool btw(const Point<F>& p1, const Point<F>& p2, const Point<F>& p3){
-    if(std::is_integral<F>)
+    if(std::is_integral<F>::value)
         return ((p1 - p3) & (p2 - p3)) <= 0;
     return fcmp((p1 - p3) & (p2 - p3), 0.0) <= 0;
 }
