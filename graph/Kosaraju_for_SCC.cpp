@@ -15,15 +15,15 @@ public:
     void init(int N){
         NodeNum = N;
         G.clear();
-        G.resize(N + 5);
+        G.resize(N);
         GT.clear();
-        GT.resize(N + 5);
+        GT.resize(N);
         while(!st.empty())
             st.pop();
         visited.clear();
-        visited.resize(N + 5, false);
+        visited.resize(N, false);
         scc.clear();
-        scc.resize(N + 5);
+        scc.resize(N);
         sccID = 1;
     }
     void addEdge(int w, int v){
@@ -46,13 +46,13 @@ public:
     }
     void Kosaraju(int N){
         visited.clear();
-        visited.resize(N + 5, false);
-        for (int i = 1; i <= N; i++){
+        visited.resize(N, false);
+        for (int i = 0; i < N; i++){
             if(!visited[i])
                 DFS(true, i);
         }
         visited.clear();
-        visited.resize(N + 5, false);
+        visited.resize(N, false);
         while(!st.empty()){
             if(!visited[st.top()])
                 DFS(false, st.top(), sccID++);
@@ -62,7 +62,7 @@ public:
     vector<vector<int>> generateReG(){
         vector<vector<int>> reG;
         reG.resize(sccID);
-        for (int i = 1; i <= NodeNum; i++){
+        for (int i = 0; i < NodeNum; i++){
             for(int w: G[i]){
                if(scc[i] == scc[w])
                    continue;
