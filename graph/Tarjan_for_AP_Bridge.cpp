@@ -13,15 +13,16 @@ class tarjan{
     vector<int> APnode;
     int timestamp;
     tarjan(int size = 1){
-        timestamp = 0;
+        init(size);
+    }
+    void init(int size = 1){
+        timestamp = 1;
+				G.clear(), D.clear(), L.clear();
         G.resize(size);
         D.resize(size, 0);
         L.resize(size, 0);
         edgeBridge.clear();
         APnode.clear();
-    }
-    void init(int size = 1){
-        tarjan(size);
     }
     void addedge(int u, int v)
     {   // undirected graph
