@@ -14,7 +14,7 @@ Polygon<F> getConvexHull(Polygon<F> points)
         for (auto &point : points)
         {
             while (hull.size() >= start + 2 &&
-                   Line<F>(hull.back(), hull[hull.size() - 2]).ori(point) <= 0)
+                   Line<F>(hull[hull.size()-2], hull[hull.size() - 1]).ori(point) <= 0)
                 hull.pop_back();
             
             // whenever point is at the RIGHT(NEGATIVE) part of the line(hull[size - 1], hull[size-2])
