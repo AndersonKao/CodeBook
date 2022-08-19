@@ -194,8 +194,8 @@ Polygon<F> getConvexHull(Polygon <F> points) {
     CH.reserve(points.size() + 1); // for what ??
     for (int round = 0; round < 2; round++){
         int start = CH.size();
-        for (Point<int> &pt: points) {
-            while (CH.size() - start >= 2 && Line<F>(CH[CH.size() - 2], CH[CH.size() - 1]).ori(pt) <= 0) // ? Line is different than senpai's .
+        for (Point<F> &pt: points) {
+            while (CH.size() - start >= 2 && Line<F>(CH[CH.size() - 2], CH[CH.size() - 1]).ori(pt) <= 0) 
             {
                 CH.pop_back();
             }

@@ -31,7 +31,7 @@ def PrepareFileDict(CurPath):
         for filename in files:
             fullpath = join(root, filename)
             name, file_extension = splitext(filename)
-            if file_extension != ".cpp" and file_extension != ".tex":
+            if file_extension != ".cpp" and file_extension != ".tex" and file_extension != ".md":
                 continue
             if fullpath[0:3] == "." + splitter + ".":
                 continue
