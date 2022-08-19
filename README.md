@@ -20,4 +20,7 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 2. 重複的code
 3. 3D rotation matrix
 4. markdown input for Theories
+5. Number Theories
+	1. modpart
+	2. [cp-algorithm Algebra](https://cp-algorithms.com/algebra/binary-exp.html)
 ##### 
