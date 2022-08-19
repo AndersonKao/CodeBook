@@ -5,3 +5,7 @@
 *.swp
 Codebook.log
 Codebook.pdf
+*.aux
+Codebook.aux
+Codebook.markdown.lua
+list.tex

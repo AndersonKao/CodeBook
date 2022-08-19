@@ -18,4 +18,6 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 
 1. 多餘的code
 2. 重複的code
+3. 3D rotation matrix
+4. markdown input for Theories
 ##### 
