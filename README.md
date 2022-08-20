@@ -23,4 +23,5 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 5. Number Theories
 	1. modpart
 	2. [cp-algorithm Algebra](https://cp-algorithms.com/algebra/binary-exp.html)
+	3. rabin fingerprint(string hashing)
 ##### 
