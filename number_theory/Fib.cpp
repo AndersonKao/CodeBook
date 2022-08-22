@@ -1,10 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-// Cassini's identity : F_{n-1}F_{n+1} - F_n^2= (-1)^n
-// The "addition" rule : F_{n+k} = F_kF_{n+1}+F_{k-1}F_n
-// k = n, F_{2n} = F_n*(F_{n+1} + F_{n-1})
-// F_{2k} = F_k*(2F_{K+1}-F_k)
-// F_{2k+1} = F_{K+1}^2+F_k^2
+// Cassini's identity : F_{n-1} F_{n+1} - F_n^2= (-1)^n
+// The "addition" rule : F_{n+k} = F_k * F_{n+1} + F_{k-1} * F_n
+// k = n, F_{2n} = F_n * (F_{n+1} + F_{n-1})
+// F_{2k} = F_k * (2F_{k+1} - F_k)
+// F_{2k+1} =  F_k^2 + F_{k+1}^2
+
+// return fib(n), fib(n+1).
 pair<int, int> fib (int n) {
     if (n == 0)
         return {0, 1};

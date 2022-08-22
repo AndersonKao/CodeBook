@@ -1,17 +1,18 @@
-syntax enable /off
-set number / nonumber
+syntax enable
+set number
 set tabstop=4
-icolo default/darkblue/koehler/desrt/ron/torte
+set shiftwidth=4
+set cindent
+
+colo torte
 nocompatible
 mouse = a
-ai
-cindent
-=tabprevious <CR>
-=tabnext<CR>
-sp
-vsp
+
+inoremap {<CR> {<CR>}<ESC>k$a<CR>
+
+// command
+sp, vsp
 <C-w> {n} {< + - >?}
-tabnew
-nore -> norecursion
-nnoremap {lhs} {rhs}
-nnoremap <C-Left> <C-Right>
+
+// replace
+:%s/target/replacement/gc    // % for global, g for all, c for confirm.

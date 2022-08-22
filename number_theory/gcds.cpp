@@ -1,21 +1,19 @@
-#include <bits/stdc++.h>
-using namespace std;
 // O(log(min(a, b)))
-int gcd(int a, int b, int& x, int& y) {
+int ext_gcd(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1;
         y = 0;
         return a;
     }
     int x1, y1;
-    int d = gcd(b, a % b, x1, y1);
+    int d = ext_gcd(b, a % b, x1, y1);
     x = y1;
     y = x1 - y1 * (a / b);
     return d;
 }
 
 bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
-    g = gcd(abs(a), abs(b), x0, y0);
+    g = ext_gcd(abs(a), abs(b), x0, y0);
     if (c % g) {
         return false;
     }
@@ -27,7 +25,6 @@ bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
     return true;
 }
 
-// finding all solution
 void shift_solution(int & x, int & y, int a, int b, int cnt) {
     x += cnt * b;
     y -= cnt * a;

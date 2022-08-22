@@ -1,16 +1,19 @@
-vector<long long> primes;
+// need to build prime vector first.
+vec<ll> primes;
 
-vector<long long> trial_division4(long long n) {
-    vector<long long> factorization;
-    for (long long d : primes) {
+vec<ll> trial_division4(ll n) {
+    vec<ll> fac;
+
+    for (ll d : primes) {
         if (d * d > n)
             break;
         while (n % d == 0) {
-            factorization.push_back(d);
+            fac.eb(d);
             n /= d;
         }
     }
     if (n > 1)
-        factorization.push_back(n);
-    return factorization;
+        fac.eb(n);
+
+    return fac;
 }
