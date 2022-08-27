@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+const ll Prime = 0xdefaced;
+
 struct VectorHash {
     size_t operator()(const std::vector<int>& v) const {
         std::hash<int> hasher;
@@ -9,4 +10,5 @@ struct VectorHash {
         return seed;
     }
 };
+
 std::unordered_set<std::vector<int>, VectorHash> H;

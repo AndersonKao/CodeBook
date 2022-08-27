@@ -1,8 +1,4 @@
 // by atsushi
-#include <vector>
-#include <stack>
-using namespace std;
-
 class tarjan_for_SCC{
 private:
     vector<vector<int>> G; // adjacency list
@@ -62,6 +58,7 @@ public:
             sccIDstamp++;
         }
     }
+    // generate induced graph.
     void generateReG(int N = 1){
         reG.clear();
         reG.resize(sccIDstamp);

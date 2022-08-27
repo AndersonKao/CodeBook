@@ -13,6 +13,7 @@ int bcc[MAX_N];
 stack<int> st;
 vector<int> adj[MAX_N];
 bool inSt[MAX_N];
+
 void DFS(int v, int fa) { //call DFS(v,v) at first
     D[v] = L[v] = timestamp++; //timestamp > 0
     st.emplace(v);

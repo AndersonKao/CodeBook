@@ -1,6 +1,7 @@
 const int MOD = 1000000009;
 const int MAX = 1000000009;
 int catalan[MAX];
+
 void init(int n) {
     catalan[0] = catalan[1] = 1;
     for (int i=2; i<=n; i++) {
