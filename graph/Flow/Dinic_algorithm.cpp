@@ -32,23 +32,23 @@ bool bfs(int s) {
     return dist[End] != -1;
 }
 int dfs(int v, int f) { 
-    int e,w,rev;
-    if( v==End || f==0 ) return f;
+    int e, w, rev;
+    if( v == End || f == 0 ) return f;
     for( auto &t : V[v] )
     {
-        tie(e,w,rev) = t;
-        if( dist[e]!=dist[v]+1 || w==0 )
+        tie(e, w, rev) = t;
+        if( dist[e] != dist[v] + 1 || w == 0 )
             continue;
 
         w = dfs(e, min(w,f));
-        if( w>0 )
+        if( w > 0 )
         {
             get<1>(t) -= w;
             get<1>(V[e][rev]) += w;
             return w;
         }
     }
-    dist[v] = -1; //優化，這個點沒用了 
+    dist[v] = -1; // pruning useless vertex
     return 0;// Fail!
 }
 int dinic(int s,int e)
