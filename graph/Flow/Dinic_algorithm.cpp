@@ -1,3 +1,7 @@
+// O(V^2E) O(VE) finding argument path
+// if unit capacity network then O(min(V^3/2, E^1/2) E)
+// solving bipartite matching O(E V^1/2) better than konig and flow(EV)
+
 struct FlowEdge {
     int v, u;
     long long cap, flow = 0;
