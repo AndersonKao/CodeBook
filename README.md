@@ -29,4 +29,6 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 	1. [] dijkstra
 	2. [] bellmanFord
 	3. [x] dinic
+7. Miscelllaneous
+	1. [Fast-Fourier Transform](https://cp-algorithms.com/algebra/fft.html#discrete-fourier-transform)
 ##### 
