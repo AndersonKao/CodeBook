@@ -1,4 +1,5 @@
 // O(log(min(a, b)))
+// returns gcd and one solution to a*x+b*y=gcd(a,b)
 int ext_gcd(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1;
@@ -12,10 +13,26 @@ int ext_gcd(int a, int b, int& x, int& y) {
     return d;
 }
 
+// iterative version of extend gcd
+int ext_gcd_it(int a, int b, int& x, int& y) {
+    x = 1, y = 0;
+    int x1 = 0, y1 = 1, a1 = a, b1 = b;
+    while (b1) {
+        int q = a1 / b1;
+        tie(x, x1) = make_tuple(x1, x - q * x1);
+        tie(y, y1) = make_tuple(y1, y - q * y1);
+        tie(a1, b1) = make_tuple(b1, a1 - q * b1);
+    }
+    return a1;
+}
+
+// find one solution (x0, y0) s.t. a*x0+b*y0=c
+// first by finding a sol for a*x+b*y=g.
+// since c % g = 0, a*x*(c/g)+b*x*(c/g)=c.
 bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
     g = ext_gcd(abs(a), abs(b), x0, y0);
     if (c % g) {
-        return false;
+        return false; // proof: a linear combination of a, b is divisible by gcd
     }
 
     x0 *= c / g;
@@ -30,6 +47,7 @@ void shift_solution(int & x, int & y, int a, int b, int cnt) {
     y -= cnt * a;
 }
 
+// # of sols(x,y) s.t. a*x+b*y = c between x,y range
 int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int maxy) {
     int x, y, g;
     if (!find_any_solution(a, b, c, x, y, g))
@@ -73,5 +91,14 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
         return 0;
     return (rx - lx) / abs(b) + 1;
 }
-// smallest possible val
-// x' + y' = x + y + k(b-a)g, minimize b-a
+/*
+iterate all solutions
+x = lx + k (b/g) for all k >= 0, until x = rx.
+
+Theorems 
+1. The set of solution a*x+b*y=c is
+    x = x0 + k*(b/g), y = x0 - k*(a/g).
+2. smallest possible val
+ x' + y' = x + y + k(b-a)g, minimize k*(b-a) 
+if a<b pick smallest k, a>b otherwise.
+*/
