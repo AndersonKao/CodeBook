@@ -1,4 +1,10 @@
 // phi(n):= # of number in [1,n] s.t. co-prime to n.
+/*
+Theorems:
+1. phi(p) = p-1 if p is a prime
+2. phi(p^k) = p^k-p^{k-1} if p is a prime
+3. phi(a*b) = phi(a)*phi(b) if gcd(a,b)=1.
+*/
 // O(sqrt(n))
 int phi(int n) {
     int result = n;
