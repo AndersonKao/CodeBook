@@ -1,57 +1,73 @@
 #define MAXN 200005
-#define MAXLOG 200
-int D[MAXN];
-int P[MAXLOG][MAXLOG];
-#include <cmath>
-#include <algorithm>
-using namespace std;
-#define MAXN 200005
-#define MAXLOG 200
 int N = MAXN;
-int lgN = log(N) / log(2);
-int D[MAXN];
-int P[MAXLOG][MAXLOG];
+int pa[31][MAXN]; // pa(i, u), vertex u's 2^i ancestor.
+void ComputeP()
+{
+    for (int i = 1; i < lgN; ++i)  // i = 0 is pre-built
+    {
+        for (int x = 0; x < N; ++x)
+        {
+            pa[i][x] = (pa[i - 1][x] == -1 ? -1 : pa[i - 1][pa[i - 1][x]]);
+        }
+    }
+}
+/* Binary Search Version */
+int D[MAXN], L[MAXN];
+vec<vec<int>> G;
+int tstamp = 0;
+// call this first
+void DFS(int u, int pa){
+    D[u] = tstamp++;
+    for(int v: G[u]){
+        if( v == pa ) continue;
+        DFS(v, u);
+    }
+    L[u] = tstamp++;
+}
+bool isPa(int u, int v){
+    return D[u] <= D[v] && L[u] >= D[v];
+}
+
+int LCA(int u, int v){
+    if(isPa(u,v))
+        return u;
+    if(isPa(v,u))
+        return v;
+    for (int i = 30; i >= 0; i--){
+        if(pa[i][u] != -1 && !isPa(pa[i][u], v))
+            u = pa[i][u];
+    }
+    return pa[0][u];
+}
+
+
+/* jump up version */
+int D[MAXN]; // depth
 int LCA(int u, int v)
 {
     if (D[u] > D[v])
         swap(u, v);
-    int s = D[v] - D[u]; // adjust D until D[v] = D[u]
-    
-    for (int i = 0; i <= lgN; ++i) // 調整他們到二進位數一樣
+    int s = D[v] - D[u]; 
+    for (int i = 0; i < 31; ++i) // adjust to same depth
         if (s & (1 << i))
-            v = P[v][i];
+            v = pa[i][v];
+
     if (u == v) 
         return v; 
+
     // because they are at same depth
     // jump up if they are different
     // think about that if P[u][i] == P[v][i]
     // then that point must be the ancestor of LCA or LCA itself
     // by this, we will stop at LCA's child
-    for (int i = lgN; i >= 0; --i)
+    for (int i = 31 - 1; i >= 0; --i)
         // 
-        if (P[u][i] != P[v][i])
+        if (pa[i][u] != pa[i][v])
         {
-            u = P[u][i];
-            v = P[v][i];
+            u = pa[i][u];
+            v = pa[i][v];
         }
-    return P[u][0];
+    return pa[0][u];
 }
 
-void ComputeP()
-{
-    int n = N;
-    for (int i = 0; i < lgN; ++i) // to lgN enough
-    {
-        for (int x = 0; x < n; ++x)
-        {
-            if (P[x][i] == -1)
-                P[x][i + 1] = -1;
-            else
-                P[x][i + 1] = P[P[x][i]][i]; // equal to move on the parent direction
-                // And P[x][i] move 2 ^ n steps to a parent we call it y
-                // P[y][i] means continue move 2 ^ n step from y to a parent we call z
-                // so the total equal to move 2 ^ n * 2 ^ n steps from x to z
-                // which is move 2 ^ (n + 1) steps to z
-        }
-    }
-}
+
