@@ -20,7 +20,8 @@ int phi(int n) {
     return result;
 }
 
-// O(nlognlogn)
+// by phi(n) = n*(1-1/p1)*(1-1/p2)*..
+// O(nloglogn)
 void phi_1_to_n(int n) {
     vector<int> phi(n + 1);
     for (int i = 0; i <= n; i++)
@@ -32,4 +33,18 @@ void phi_1_to_n(int n) {
                 phi[j] -= phi[j] / i;
         }
     }
+}
+
+// Gauss phi's property: sum{phi(d) , for all d|n} = n.
+// O(nlogn)
+void phi_1_to_n(int n) {
+    vector<int> phi(n + 1);
+    phi[0] = 0;
+    phi[1] = 1;
+    for (int i = 2; i <= n; i++)
+        phi[i] = i - 1;
+
+    for (int i = 2; i <= n; i++)
+        for (int j = 2 * i; j <= n; j += i)
+              phi[j] -= phi[i];
 }
