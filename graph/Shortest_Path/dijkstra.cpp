@@ -1,9 +1,9 @@
 vector<vector<pii>> G;
 vector<int> dis; // distance;
-void dijkstra(){
+void dijkstra(int src){
     priority_queue<pii, vector<pii>, greater<pii>> pq;
-    dis[0] = 0;
-    pq.emplace(pii(0, 0));
+    dis[src] = 0;
+    pq.emplace(0, src);
     while(pq.size()){
         pii cur = pq.top();
         pq.pop();

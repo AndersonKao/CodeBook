@@ -2,11 +2,12 @@ vector<tuple<int, int, int>> edges;
 vector<int> dis;
 const int inf = 0x3f3f3f3f;
 // return true if contain cycles
-bool Bellman_Ford()
+bool Bellman_Ford(int src)
 {
     int V; // # of vertices
     int E = edges.size();
     dis.resize(V, inf);
+    dis[src] = 0;
     for (int i = 0; i < V - 1; i++)
     {
         for (int j = 0; j < E; j++){
