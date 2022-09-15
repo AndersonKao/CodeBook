@@ -31,7 +31,7 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 	1. [x] dijkstra
 	2. [x] bellmanFord
 	3. [x] dinic
-	4. [ ] Flow renew
+  	4. [ ] Flow renew
 7. Geometry
 	1. [ ] 半平面交
 	2. [ ] sweep line
@@ -40,5 +40,5 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 	4. [ ] Li-Chao Tree
 	5. [ ] Nearest pair of points
 	6. [ ] [halfplane-intersection](https://cp-algorithms.com/geometry/halfplane-intersection.html)
-	
-##### 
+8. Miscelllaneous
+	1. [Fast-Fourier Transform](https://cp-algorithms.com/algebra/fft.html#discrete-fourier-transform)
