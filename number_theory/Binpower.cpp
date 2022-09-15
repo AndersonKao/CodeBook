@@ -10,7 +10,6 @@ long long binpow(long long a, long long b, long long m) {
     return res;
 }
 
-// O(nlogk) to apply permutation k times
 vector<int> applyPermutation(vector<int> sequence, vector<int> permutation) {
     vector<int> newSequence(sequence.size());
     for(int i = 0; i < sequence.size(); i++) {
@@ -19,6 +18,7 @@ vector<int> applyPermutation(vector<int> sequence, vector<int> permutation) {
     return newSequence;
 }
 
+// O(nlogk) to apply permutation b times on sequence
 vector<int> permute(vector<int> sequence, vector<int> permutation, long long b) {
     while (b > 0) {
         if (b & 1) {
