@@ -31,7 +31,7 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 	1. [x] dijkstra
 	2. [x] bellmanFord
 	3. [x] dinic
-  4. [ ] Flow renew
+  	4. [ ] Flow renew
 7. Miscelllaneous
 	1. [Fast-Fourier Transform](https://cp-algorithms.com/algebra/fft.html#discrete-fourier-transform)
 8. Geometry
