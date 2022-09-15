@@ -29,3 +29,19 @@ vec<int> KMP_match(vec<int> fail, const string& S, const string& T) {
     
     return res;
 }
+
+// Counting the number of occurrences of each prefix
+void prefix_occur(){
+    vector<int> ans(n + 1);
+    for (int i = 0; i < n; i++)
+        ans[pi[i]]++;
+    for (int i = n-1; i > 0; i--)
+        ans[pi[i-1]] += ans[i];
+    for (int i = 0; i <= n; i++)
+        ans[i]++;
+}
+
+// we set pi[0] = 0, and if (i+1) % ((i+1) - prefix[i]) == 0,
+// the minimum circular string length will be (i+1) - prefix[i],
+// otherwise it will be (i+1) (no circular).
+// ex. abcabcabcabcabc = abc*5.
