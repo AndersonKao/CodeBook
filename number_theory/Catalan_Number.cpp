@@ -17,8 +17,8 @@ void init(int n) {
 /*
 C[0] = C[1] = 1.
 C[n] = C[k]*C[n-1-k], k from 0 to n-1.  if n >= 2.
-*/
-/* solution for
+
+solution for
 Number of correct bracket sequence consisting of n opening and n closing brackets.
 The number of rooted full binary trees with n+1 leaves (vertices are not numbered). A rooted binary tree is full if every vertex has either two children or no children.
 The number of binary search trees that will be formed with N keys.
