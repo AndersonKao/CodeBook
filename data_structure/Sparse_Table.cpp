@@ -17,6 +17,7 @@ inline void init()
         );
 }
 
+// get min of v[l, r].
 inline int query(int l, int r)
 {
     int k = __lg(r - l + 1);
