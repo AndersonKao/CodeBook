@@ -14,6 +14,16 @@ void init(int n) {
         }
     }
 }
+
+//pass CSES Bracket Sequences I
+//O(nlogMOD)
+void init(ll n) {
+    //use long long
+	catalan[0] = 1;
+	for(ll i=1;i<=n;i++)
+		catalan[i] = catalan[i-1] * 2 * (2*i+1) % MOD * binpow(i+2, MOD-2, MOD) % MOD;
+} 
+
 /* solution for
 Number of correct bracket sequence consisting of n opening and n closing brackets.
 The number of rooted full binary trees with n+1 leaves (vertices are not numbered). A rooted binary tree is full if every vertex has either two children or no children.
