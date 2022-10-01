@@ -24,7 +24,7 @@ vector<int> SA(string s) {
 			pn[i] = p[i] - h;
 			if(pn[i] < 0) pn[i]+=n;
 		}
-		fill(cnt.begin(), cnt.end(), 0);
+		fill(cnt.begin(), cnt.begin() + classes, 0);
 		
 		for(int i=0;i<n;i++) cnt[c[pn[i]]]++;
 		for(int i=1;i<classes;i++) cnt[i]+=cnt[i-1];
