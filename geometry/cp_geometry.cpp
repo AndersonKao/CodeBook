@@ -185,27 +185,3 @@ ostream &operator<<(ostream &os, const Line<F> &l)
 {
     return os << "(" << l.st.x << ", " << l.st.y << ") to (" << l.ed.x << ", " << l.ed.y << ")";
 }
-template <class F>
-using Polygon = vector<Point<F>>;
-template <class F>
-Polygon<F> getConvexHull(Polygon <F> points) {
-    sort(points.begin(), points.end());
-    Polygon<F> CH;
-    CH.reserve(points.size() + 1); // for what ??
-    for (int round = 0; round < 2; round++){
-        int start = CH.size();
-        for (Point<F> &pt: points) {
-            while (CH.size() - start >= 2 && Line<F>(CH[CH.size() - 2], CH[CH.size() - 1]).ori(pt) <= 0) 
-            {
-                CH.pop_back();
-            }
-            CH.emplace_back(pt);
-        }
-        CH.pop_back();
-        
-        reverse(points.begin(), points.end());
-    }
-    if (CH.size() == 2 && CH[0] == CH[1])
-        CH.pop_back();
-    return CH;
-}
