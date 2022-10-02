@@ -14,6 +14,16 @@ void init(int n) {
         }
     }
 }
+
+//pass CSES Bracket Sequences I
+//O(nlogMOD)
+void init(ll n) {
+    //use long long
+	catalan[0] = 1;
+	for(ll i=1;i<=n;i++)
+		catalan[i] = catalan[i-1] * 2 * (2*i+1) % MOD * binpow(i+2, MOD-2, MOD) % MOD;
+} 
+
 /*
 C[0] = C[1] = 1.
 C[n] = C[k]*C[n-1-k], k from 0 to n-1.  if n >= 2.
