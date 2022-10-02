@@ -3,14 +3,15 @@ const ll MOD = 998244353;
 
 ll fact[MAX], tcaf[MAX];
 
-ll deg(ll x, ll d) {
+ll binpow(ll x, ll d) {
     if (d < 0) d += MOD - 1;
+
     ll y = 1;
-    while (d) {
+    do{
         if (d & 1) (y *= x) %= MOD;
-        d /= 2;
         (x *= x) %= MOD;
-    }
+    } while (d >>= 1);
+
     return y;
 }
 
@@ -20,7 +21,7 @@ void init(int n) {
     for (int i = 1; i <= n; i++)
         fact[i] = i * fact[i - 1] % MOD;
     for (int i = n; i >= 0; --i)
-        tcaf[i] = deg(fact[i], -1);
+        tcaf[i] = binpow(fact[i], -1);
 }
 
 // Invoke nCr via this.
