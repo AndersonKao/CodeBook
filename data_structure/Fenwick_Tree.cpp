@@ -48,6 +48,7 @@ for idx < l, nothing
 for l <= idx <= r, add ((idx - l + 1) + 1)*(idx-l+1) / 2, just (a+b)*h/2.
 for idx > r, add (r-l+1 + 1) * (r-l+1) / 2.
 Decompose them into separate terms like (idx^2, idx, 2*dix, 2*C, origin val). */
+// same thoughts may be use on Segment Tree.
 struct Polynomial_Queries{
 	vec<BIT<ll>> BITs;
 	int n;
@@ -86,7 +87,6 @@ struct Polynomial_Queries{
 		return ans;
 	}
 	ll query(int l, int r){
-		//cout << query(r) << ", " << query(l - 1) << endl;
 		return query(r) - query(l - 1);
 	}
 };
