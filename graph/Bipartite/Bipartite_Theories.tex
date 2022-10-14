@@ -14,5 +14,7 @@ In any bipartite graph, the number of edges in a maximum matching equals the num
 
 In any bipartite graph, the complement of mimimum vertex cover is a maximum Independent set.
 
+\subsubsection{Minimum Weighted Vertex Cover}
 
+二分圖的minimum weighted vertex cover可以透過最大流求出，建模方式如下：source 連向所有左邊的點，capacity是點權，所有右邊的點連向sink，capacity是點權，對於二分圖中原本有的邊，從左邊連向右邊，capacity為INF。可以透過此圖的 min cut構造出 vertex cover，而min cut可以透過此圖的 max flow 求出。
 
