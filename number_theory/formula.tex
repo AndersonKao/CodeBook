@@ -1,0 +1,119 @@
+%\documentclass[a4paper,10pt,oneside]{article}
+%\usepackage{xeCJK}
+%\setCJKmainfont{微軟正黑體}
+%\begin{document}
+
+\subsubsection{圖論}
+\begin{enumerate}\itemsep = -5pt
+\item 對於平面圖，$F=E-V+C+1$，C是連通分量數
+\item 對於平面圖，$E\leq 3V-6$
+\item 對於連通圖G，最大獨立點集的大小設為I(G)，最大匹配大小設為M(G)，最小點覆蓋設為Cv(G)，最小邊覆蓋設為Ce(G)。
+對於任意連通圖：
+	\begin{enumerate}\itemsep = -3pt
+	\item $I(G)+Cv(G)=|V|$
+	\item $M(G)+Ce(G)=|V|$
+	\end{enumerate}
+\item 對於連通二分圖：
+	\begin{enumerate}\itemsep = -3pt
+	\item $I(G)=Cv(G)$
+	\item $M(G)=Ce(G)$
+	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{dinic特殊圖複雜度}
+\begin{enumerate}\itemsep = -5pt
+\item 單位流：$O\left(min\left(V^{3/2},E^{1/2}\right)E\right)$
+\item 二分圖：$O\left(V^{1/2}E\right)$
+\end{enumerate}
+
+\subsubsection{學長公式}
+\begin{enumerate}\itemsep = -3pt
+\item $\sum_{d|n} \phi(n) = n$
+\item $\text{Harmonic series } H_n = \ln(n) + \gamma + 1/(2n) - 1/(12n^2) + 1/(120n^4)$
+\item $ \gamma = 0.57721566490153286060651209008240243104215$
+\item 格雷碼$=n\oplus (n>>1)$
+\item $SG(A+B)=SG(A)\oplus SG(B)$
+\item 旋轉矩陣$M(\theta)= \left( \begin{array}{ccc}
+cos\theta & -sin\theta \\ 
+sin\theta &  cos\theta
+\end{array} \right)$
+\end{enumerate}
+
+\subsubsection{基本數論}
+\begin{enumerate}\itemsep = -3pt
+	\item $\sum_{i=1}^n\sum_{j=1}^nlcm(i,j)=n\sum_{d|n} d \times \phi (d)$
+\end{enumerate}
+
+\subsubsection{排組公式}
+\begin{enumerate}
+\itemsep = -3pt
+\item k卡特蘭$\frac{C_{n}^{kn}}{n(k-1)+1}$，$C_{m}^{n}=\frac{n!}{m!(n-m)!}$
+\item $H(n,m)\cong x_1+x_2\ldots +x_n=k, num=C_{k}^{n+k-1}$
+\item Stirling number of $2^{nd}$,$n$人分$k$組方法數目
+	\begin{enumerate}\itemsep = -2pt
+		\item $S(0,0)=S(n,n)=1$
+		\item $S(n,0)=0$
+		\item $S(n,k)=kS(n-1,k)+S(n-1,k-1)$
+	\end{enumerate}
+\item Bell number,$n$人分任意多組方法數目
+	\begin{enumerate}\itemsep = -2pt
+		\item $B_0=1$
+		\item $B_n=\sum_{i=0}^nS(n,i)$
+		\item $B_{n+1}=\sum_{k=0}^{n} C_k^n B_k$
+		\item $B_{p+n}\equiv B{_n}+B_{n+1} mod p$, p is prime
+		\item $B_{p^m+n}\equiv mB{_n}+B_{n+1} mod p$, p is prime
+		\item From $B_0: 1,1,2,5,15,52,\\203,877,4140,21147,115975$
+	\end{enumerate}
+\item Derangement,錯排,沒有人在自己位置上
+	\begin{enumerate}\itemsep = -2pt
+		\item $D_n=n!(1-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}\ldots +(-1)^n\frac{1}{n!})$
+		\item $D_n=(n-1)(D_{n-1}+D_{n-2}),D_0=1,D_1=0$
+		\item From $D_0: 1,0,1,2,9,44,\\265,1854,14833,133496$
+	\end{enumerate}
+\item Binomial\ Equality
+	\begin{enumerate}\itemsep = -2pt
+	    \item $\sum_k \binom{r}{m + k} \binom{s}{n - k} = \binom{r + s}{m + n}$
+         \item $\sum_k \binom{l}{m + k} \binom{s}{n + k} = \binom{l + s}{l -m + n}$		
+         \item $\sum_k \binom{l}{m + k} \binom{s + k}{n}(-1)^k = (-1)^{l + m} \binom{s - m}{n - l}$
+		\item $\sum_{k\leq l} \binom{l - k}{m} \binom{s}{k - n}(-1)^k = (-1)^{l + m} \binom{s - m - 1}{l - n - m}$
+		\item $\sum_{0 \leq k \leq l} \binom{l - k}{m} \binom{q + k}{n} = \binom{l + q + 1}{m + n + 1}$
+		\item $\binom{r}{k} = (-1)^k\binom{k - r - 1}{k}$
+		\item $\binom{r}{m} \binom{m}{k} = \binom{r}{k} \binom{r - k}{m - k}$
+		\item $\sum_{k\leq n} \binom{r + k}{k} = \binom{r + n + 1}{n}$
+		\item $\sum_{0\leq k \leq n} \binom{k}{m} = \binom{n + 1}{m + 1}$
+		\item $\sum_{k\leq m}\binom{m + r}{k}x^ky^k = \sum_{k\leq m}\binom{-r}{k}(-x)^k (x+y)^{m-k}$	
+	\end{enumerate}
+\end{enumerate}
+
+
+\subsubsection{冪次,冪次和}
+\begin{enumerate}\itemsep = -3pt
+	\item $a^b\%P=a^{b\% \varphi (p)+\varphi (p)},b\geq \varphi (p)$
+	\item $1^3+2^3+3^3+\ldots +n^3=\frac{n^4}{4}+\frac{n^3}{2}+\frac{n^2}{4}$
+	\item $1^4+2^4+3^4+\ldots +n^4=\frac{n^5}{5}+\frac{n^4}{2}+\frac{n^3}{3}-\frac{n}{30}$
+	\item $1^5+2^5+3^5+\ldots +n^5=\frac{n^6}{6}+\frac{n^5}{2}+\frac{5n^4}{12}-\frac{n^2}{12}$
+	\item $0^k+1^k+2^k+\ldots +n^k = P(k),P(k)=\frac{(n+1)^{k+1}-\sum_{i=0}^{k-1}C_i^{k+1}P(i)}{k+1},P(0)=n+1$
+	\item $\sum_{k=0}^{m-1}k^n=\frac{1}{n+1}\sum_{k=0}^{n}C_k^{n+1}B_km^{n+1-k}$
+	\item $\sum_{j=0}^{m}C_j^{m+1}B_j=0,B_0=1$
+	\item 除了$B_1=-1/2$，剩下的奇數項都是$0$
+	\item $B_2=1/6,B_4=-1/30,B_6=1/42,B_8=-1/30,B_{10}=5/66,B_{12}=-691/2730,B_{14}=7/6,B_{16}=-3617/510,B_{18}=43867/798,B_{20}=-174611/330,$
+\end{enumerate}
+
+\subsubsection{Burnside's lemma}
+\begin{enumerate}\itemsep = -3pt
+	\item $|X/G| = \frac{1}{|G|}\sum_{g \in G}|X^g|$
+	\item $X^g=t^{c(g)}$
+	\item $G$表示有幾種轉法，$X^g$表示在那種轉法下，有幾種是會保持對稱的，$t$是顏色數，$c(g)$是循環節不動的面數。
+	\item 正立方體塗三顏色，轉0有$3^6$ 個元素不變，轉90有6種，每種有$3^3$不變，180有$3\times 3^4$，120(角)有$8\times 3^2$，180(邊)有$6\times 3^3$，全部$\frac{1}{24}\left(3^6+6\times 3^3 + 3 \times 3^4 + 8 \times 3^2 + 6 \times 3^3 \right) = 57$
+\end{enumerate}
+
+\subsubsection{Count on a tree}
+\begin{enumerate}\itemsep = -3pt
+	\item Spanning Tree
+	\begin{enumerate}\itemsep = -2pt
+		\item 完全圖$n^n-2$
+		\item 一般圖(Kirchhoff's theorem)$M[i][i]=degree(V_i)$,$M[i][j]=-1$,if have $E(i,j)$,$0$ if no edge. delete any one row and col in $A$, $ans = det(A)$
+	\end{enumerate}
+\end{enumerate}
+
+%\end{document}
