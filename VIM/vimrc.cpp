@@ -5,8 +5,8 @@ set shiftwidth=4
 set cindent
 
 colo torte
-nocompatible
-mouse = a
+set nocompatible
+set mouse=a
 
 inoremap {<CR> {<CR>}<ESC>k$a<CR>
 

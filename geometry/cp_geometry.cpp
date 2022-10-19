@@ -132,3 +132,14 @@ auto radCmp = [](Line A, Line B)
         return B.ori(A.sp) > 0;
     return (a ^ b) > 0;
 };
+
+
+// 以原點極角排序逆時針排一圈。最好用整數做，不然應該會有誤差
+// 以某點須對點集合做offset 處理
+inline bool up (point p) {
+  return p.y > 0 or (p.y == 0 and p.x >= 0);
+}
+
+sort(v.begin(), v.end(), [] (point a, point b) {
+  return up(a) == up(b) ? a.x * b.y > a.y * b.x : up(a) < up(b);
+});
