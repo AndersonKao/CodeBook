@@ -2,6 +2,7 @@ set nu cin ts=4 sw=4 aw hls is
 syntax on
 
 colo torte
+set nocompatible
 
 inoremap {<CR> {<CR>}<ESC>k$a<CR>
 nn <F8> :w <bar> :!vim 
