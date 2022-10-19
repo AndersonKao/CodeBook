@@ -1,0 +1,19 @@
+
+\begin{enumerate}
+\item Cayley's Formula: There are $n^{n-2}$ spanning trees of a complete graph with $n$ labelled vertices. (Also, $(n+1)^{n-1}$ labelled rooted forests.) Example: UVa 10843 - Anne's game.
+	\begin{itemize}
+		\item The following generalizes Cayley's formula to labelled forests: Let $T_{n,k}$ be the number of labelled forests on $n$ vertices with $k$ connected components, such that vertices $1, 2, ..., k$ all belong to different connected components. Then $T_{n,k} = k\times n^{n − k − 1}$.
+	\end{itemize}
+\item Derangement: A permutation of the elements of a set such that non of the elements appear in their original position. The number of Derangements $der(n)$ can be computed as follow: $der(n) = (n-1) \times (der(n-1) + der(n-2))$, where $der(0) = 1$ and $der(1) = 0$. A basic problem involving derangement is UVa 12024 - Hats (see Section 5.6).
+\item  Erdos Gallai's Theorem gives a necessary and sufficient condition for a finite sequence of natural numbers to be the \emph{degree sequence} of a simple graph. A sequence of nonnegative integers $d_1 \geq d_2 \geq ... \geq d_n$ can be the degree sequence of a simple graph on $n$ vertices iff $\sum_{i=1}^{n} d_i$ is even and $\sum_{i=1}^{k} d_i \leq k \times (k-1) + \sum_{i=k+1}^{n}min(d_i, k)$ holds for $1 \leq k \leq n$. Example: UVa 10720 - Graph Construction.
+	\begin{itemize}
+	\item (題目：已知一個無向圖的所有頂點的度，問能否構造成一個簡單圖)
+	\item 構成圖判定：所有點的度數和為偶數（防止溢出可以只判斷奇偶）
+	\item Havel定理：將所有邊排序，將度數最大的頂點依次與剩下的頂點連接邊（從度數大的開始），去掉度數最大的頂點後構成子問題，如果出現矛盾則失敗，否則成功;
+	\end{itemize}
+\item Euler's Formula for Planar Graph: $V-E+F=2$, where $F$ is the number of faces of the Planar Graph. Example: UVa 10178 - Count the Faces.
+\item Moser's Circle: Determine the number of pieces into which a circle is divided if $n$ points on its circumference(圓周) are joined by chords with not three internally concurrent(三線交一點). Solution: $g(n) = C_{4}^{n} + C_{2}^{n} + 1$. Example: UVa 10213 - How Many Pieces of Lands?
+\item Pick's Theorem: Let $I$ be the number of integer points in the polygon, $A$ be the area of the polygon, and $b$ be the number of integer points on the boundary, then $A = i + \frac{b}{2} - 1$. Example: UVa 10088 - Trees on My Island.
+\item The number of spanning tree of a complete bipartite graph $K_{n,m}$ is $m^{n-1} \times n^{m-1}$. Example: UVa 11719 - Gridlands Airport.
+	
+\end{enumerate}
