@@ -51,15 +51,14 @@ public:
             if(!visited[i])
                 DFS(true, i);
         }
-        visited.clear();
-        visited.resize(N, false);
+        fill(al(visited), false) 
         while(!st.empty()){
             if(!visited[st.top()])
                 DFS(false, st.top(), sccID++);
             st.pop();
         }
     }
-    vector<vector<int>> generateReG(){
+    vector<vector<int>> generateReG(){ // generate reduced Graph (DAG)
         vector<vector<int>> reG;
         reG.resize(sccID);
         for (int i = 0; i < NodeNum; i++){
