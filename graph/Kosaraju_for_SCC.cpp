@@ -1,3 +1,4 @@
+// scc[u] will be a topological sort order of each SCC
 struct Kosaraju{
     int NodeNum;
     vector<vector<int>> G;
