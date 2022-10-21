@@ -1,4 +1,5 @@
 // by atsushi
+// sccID[u] will be a REVERSED topological sort order of each SCC
 class tarjan_for_SCC{
 private:
     vector<vector<int>> G; // adjacency list
