@@ -1,17 +1,13 @@
-#include <vector>
-#include <stack>
-using namespace std;
-#define MAX_N 200005
-class Kosaraju_for_SCC{
+// scc[u] will be a topological sort order of each SCC
+struct Kosaraju{
     int NodeNum;
     vector<vector<int>> G;
     vector<vector<int>> GT;
     stack<int> st;
     vector<bool> visited;
     vector<int> scc;
-    int sccID;
+    int sccNum;
 
-public:
     void init(int N){
         NodeNum = N;
         G.clear();
@@ -24,44 +20,45 @@ public:
         visited.resize(N, false);
         scc.clear();
         scc.resize(N);
-        sccID = 1;
+        sccNum = 0;
     }
-    void addEdge(int w, int v){
-        G[w].emplace_back(v);
-        GT[v].emplace_back(w);
+    void addEdge(int u, int v){
+        G[u].emplace_back(v);
+        GT[v].emplace_back(u);
     }
-    void DFS(bool isG, int v, int k = -1){
-        visited[v] = true;
-        scc[v] = k;
+    void DFS(bool isG, int u, int sccID = -1){
+        visited[u] = true;
         vector<vector<int>> &dG = (isG ? G : GT);
-        for(int w: dG[v])
+        for(int v: dG[u])
         {
-            if(!visited[w]){
-                DFS(isG, w, k);
+            if(!visited[v]){
+                DFS(isG, v, sccID);
             }
         }
         if(isG){
-            st.push(v);
+            st.push(u);
+        }
+        else{
+            scc[u] = sccID;
         }
     }
-    void Kosaraju(int N){
-        visited.clear();
-        visited.resize(N, false);
-        for (int i = 0; i < N; i++){
+    void run(){
+        fill(al(visited), false);
+        for (int i = 0; i < NodeNum; i++){
             if(!visited[i])
                 DFS(true, i);
         }
-        visited.clear();
-        visited.resize(N, false);
+        fill(al(visited), false);
         while(!st.empty()){
             if(!visited[st.top()])
-                DFS(false, st.top(), sccID++);
+                DFS(false, st.top(), sccNum++);
             st.pop();
         }
     }
-    vector<vector<int>> generateReG(){
+
+    vector<vector<int>> reduceG(){ //call after run
         vector<vector<int>> reG;
-        reG.resize(sccID);
+        reG.resize(sccNum);
         for (int i = 0; i < NodeNum; i++){
             for(int w: G[i]){
                if(scc[i] == scc[w])
