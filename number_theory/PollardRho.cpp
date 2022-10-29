@@ -21,6 +21,7 @@ ll f(ll x, ll& c, ll& pmod) {
 }
 
 ll pollard(ll x) {
+	if(x == 4) return 2;
 	ll c = mt()%x;
 	ll a=2, b=2;
 	

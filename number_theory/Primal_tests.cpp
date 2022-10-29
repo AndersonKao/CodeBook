@@ -52,6 +52,7 @@ bool MillerRabin(ll n) {
 	while(u%2 == 0) u>>=1, t++;
 	
 	for(ll a : {2,3,5,7,11,13,17,19,23,29,31,37}) {
+		if(n == a) return true;
 		ll x = fpow(a, u, n);
 		if(x == 1 || x == n-1) continue;
 		
