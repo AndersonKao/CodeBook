@@ -1,7 +1,7 @@
 const int MAX = 3000005;
 const ll MOD = 998244353;
 
-ll fact[MAX], tcaf[MAX];
+ll fact[MAX], tcaf[MAX]; // tcaf[a] = fact[a]^-1 mod n
 
 ll binpow(ll x, ll d) {
     if (d < 0) d += MOD - 1;
