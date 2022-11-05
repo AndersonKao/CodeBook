@@ -7,8 +7,8 @@ set nocompatible
 inoremap {<CR> {<CR>}<ESC>k$a<CR>
 nn <F8> :w <bar> :!vim 
 nn <F9> :w <bar> :!g++ -std=c++17 -O2 -Wall -Wextra -fsanitize=address % -o %<<CR>
-nn <F10> :w <bar> :!./%<<CR>
-nn <F12> :w <bar> :!./%< < 
+nn <F3> :w <bar> :!./%<<CR>
+nn <F4> :w <bar> :!./%< < 
 
 // command
 sp, vsp
