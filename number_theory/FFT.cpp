@@ -10,9 +10,6 @@ int reverse(int num, int lg_n) {
     return res;
 }
 
-using cd = complex<double>;
-const double PI = acos(-1);
-
 void fft(vector<cd> & a, bool invert) {
     int n = a.size();
 
@@ -45,7 +42,7 @@ void fft(vector<cd> & a, bool invert) {
             x /= n;
     }
 }
-
+// if doing on real number polynomial, just change int to double. And check real() >= eps ? real() : 0 at line 62 (generating result)
 vector<int> multiply(vector<int> const& a, vector<int> const& b) {
     vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
     int n = 1;
@@ -75,14 +72,16 @@ vector<int> multiply(vector<int> const& a, vector<int> const& b) {
 }
 
 int main(){
-    scanf("%s%s", sa, sb);
+    scanf("%s%s", sa, sb); // multiply two bin integers
     lena = strlen(sa), lenb = strlen(sb);
     while(n < lena + lenb) n *= 2; // reserving space for multiplication 
     vec<int> a(n, 0), b(n, 0);
     for(int i = 0; i < lena; i++)
-	    a[i].real(sa[lena - 1 - i] - '0');
+	    a[i] = sa[lena - 1 - i] - '0');
     for(int i = 0; i < lenb; i++)
-	    b[i].real(sb[lenb - 1 - i] - '0');
+	    b[i] = sb[lenb - 1 - i] - '0');
+
+    vec<int> res = multiply(a, b);
     for(int i = res[lena + lenb - 1] ? lena + lenb - 1: lena + lenb - 2; i >= 0; i--)
 	    putchar('0' + res[i]);
     putchar('\n') return 0;
