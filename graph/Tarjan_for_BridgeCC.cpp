@@ -5,11 +5,11 @@ struct edge
     edge(int u = 0, int v = 0) : u(u), v(v), is_bridge(0) {}
 };
 
-std::vector<edge> E;
-std::vector<int> G[N]; // 1-base
-int low[N], dfn[N], Time;
-int bcc_id[N], bridge_cnt, bcc_cnt; // 1-base
-int st[N], top;                     // BCC用
+vector<int> G[maxn]; // 1-base
+vector<edge> E;
+int low[maxn], dfn[maxn], Time;
+int bcc_id[maxn], bridge_cnt, bcc_cnt; // 1-base
+int st[maxn], top;                     // BCC用
 
 inline void add_edge(int u, int v)
 {
@@ -41,10 +41,10 @@ void dfs(int u, int pa)
     }
     if (dfn[u] == low[u])   //處理BridgeCC
     {           
+        ++bcc_cnt; // 1-base
         do
             bcc_id[v = st[--top]] = bcc_cnt; //每個點所在的BCC
         while (v != u);
-        ++bcc_cnt; // 1-base
     }
 }
 inline void bcc_init(int n)

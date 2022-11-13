@@ -1,4 +1,12 @@
+struct edge
+{
+    int u, v;
+    bool is_bridge;
+    edge(int u = 0, int v = 0) : u(u), v(v), is_bridge(0) {}
+};
+
 vector<int> G[maxn]; // 1-base
+vector<edge> E;
 vector<int> nG[maxn], bcc[maxn];
 int low[maxn], dfn[maxn], Time;
 int bcc_id[maxn], bcc_cnt; // 1-base
@@ -13,13 +21,21 @@ void bcc_init(int n)
         G[i].clear(), dfn[i] = bcc_id[i] = is_cut[i] = 0;
 }
 
+inline void add_edge(int u, int v)
+{
+    G[u].push_back(E.size());
+    G[v].push_back(E.size());
+    E.push_back(edge(u, v));
+}
+
 void dfs(int u, int pa = -1)// call dfs(u) for all unvisited node
 { 
     int child = 0;
     low[u] = dfn[u] = ++Time;
     st[top++] = u;
-    for (int v : G[u])
+    for (int eid : G[u])
     {
+        int v = E[eid].u ^ E[eid].v ^ u;
         if (!dfn[v])
         {
             dfs(v, u), ++child;
@@ -36,7 +52,7 @@ void dfs(int u, int pa = -1)// call dfs(u) for all unvisited node
                     bcc[bcc_cnt].push_back(t);
                 } while (t != v);
                 bcc_id[u] = bcc_cnt;
-                bcc[bcc_cnt].pb(u);
+                bcc[bcc_cnt].eb(u);
             }
         }
         else if (dfn[v] < dfn[u] && v != pa) // !=pa vary important
