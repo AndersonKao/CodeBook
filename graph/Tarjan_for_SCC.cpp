@@ -2,8 +2,8 @@
 // sccID[u] will be a REVERSED topological sort order of each SCC
 struct tarjan_for_SCC{
     vector<vector<int>> G; // adjacency list
-    vector<int> D;
-    vector<int> L;
+    vector<int> dfn;
+    vector<int> low;
     vector<int> sccID;
     stack<int> st; // for SccID
     vector<bool> inSt;
@@ -11,8 +11,8 @@ struct tarjan_for_SCC{
     int timeStamp, sccNum;
     void init(int n = 1){
         G.assign(n, vec<int>());
-        D.assign(n, 0);
-        L.assign(n, 0);
+        dfn.assign(n, 0);
+        low.assign(n, 0);
         sccID.assign(n, 0);
         inSt.assign(n, false);
         while(!st.empty())
@@ -24,24 +24,24 @@ struct tarjan_for_SCC{
         G[from].eb(to);
     }
     void DFS(int u){ //call DFS(u) for all unvisited vertex 
-        D[u] = L[u] = ++timeStamp; //timestamp > 0
+        dfn[u] = low[u] = ++timeStamp; //timestamp > 0
         st.push(u);
         inSt[u] = true;
 
         for(int v: G[u]){ 
-            if(!D[v]){ // D[v] = 0 if not visited
+            if(!dfn[v]){ // dfn[v] = 0 if not visited
                 DFS(v);
-                L[u] = min(L[u], L[v]);
+                low[u] = min(low[u], low[v]);
             }else if(inSt[v])
             { /* v has been visited.
-                if we don't add this, the L[u] will think that u can back to node whose index less to u.
+                if we don't add this, the low[u] will think that u can back to node whose index less to u.
                 inSt[v] is true that u -> v is a cross edge
                 opposite it's a forward edge
             */
-                L[u] = min(L[u], D[v]);
+                low[u] = min(low[u], dfn[v]);
             }
         }
-        if(D[u] == L[u]){
+        if(dfn[u] == low[u]){
             int v;
             do{
                 v = st.top(), st.pop();
