@@ -62,7 +62,7 @@ vector<int> multiply(vector<int> const& a, vector<int> const& b) {
         result[i] = round(fa[i].real());
 /* add this for multiplying two long numbers
     int carry = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++){
         result[i] += carry;
         carry = result[i] / 10;
         result[i] %= 10;
@@ -71,20 +71,22 @@ vector<int> multiply(vector<int> const& a, vector<int> const& b) {
     return result;
 }
 
+char sa[10000], sb[10000];
 int main(){
-    scanf("%s%s", sa, sb); // multiply two bin integers
-    lena = strlen(sa), lenb = strlen(sb);
+    scanf("%s%s", sa, sb); // multiply two big integers
+    int lena = strlen(sa), lenb = strlen(sb);
+	int n = 1;
     while(n < lena + lenb) n *= 2; // reserving space for multiplication 
     vec<int> a(n, 0), b(n, 0);
     for(int i = 0; i < lena; i++)
-	    a[i] = sa[lena - 1 - i] - '0');
+	    a[i] = sa[lena - 1 - i] - '0';
     for(int i = 0; i < lenb; i++)
-	    b[i] = sb[lenb - 1 - i] - '0');
+	    b[i] = sb[lenb - 1 - i] - '0';
 
     vec<int> res = multiply(a, b);
     for(int i = res[lena + lenb - 1] ? lena + lenb - 1: lena + lenb - 2; i >= 0; i--)
 	    putchar('0' + res[i]);
-    putchar('\n') return 0;
+    putchar('\n'); return 0;
 }
 
 
@@ -97,7 +99,7 @@ const int root_pw = 1 << 20;
 
 int inverse(int a, int m){ // returns a^-1 mod m, 0 if not found
     int x, y;
-    int g = extended_euclidean(a, m, x, y);
+    int g = ext_gcd(a, m, x, y);
     if (g != 1) {
         return 0;
     }
