@@ -1,0 +1,3 @@
+for (subset = all; subset != 0; subset = (subset-1)&all) {
+    // do something ...
+}

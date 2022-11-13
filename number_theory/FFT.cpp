@@ -1,16 +1,7 @@
 using cd = complex<double>;
 const double PI = acos(-1);
 
-int reverse(int num, int lg_n) {
-    int res = 0;
-    for (int i = 0; i < lg_n; i++) {
-        if (num & (1 << i))
-            res |= 1 << (lg_n - 1 - i);
-    }
-    return res;
-}
-
-void fft(vector<cd> & a, bool invert) {
+void fft(vec<cd>& a, bool invert) {
     int n = a.size();
 
     for (int i = 1, j = 0; i < n; i++) {
@@ -42,9 +33,9 @@ void fft(vector<cd> & a, bool invert) {
             x /= n;
     }
 }
-// if doing on real number polynomial, just change int to double. And check real() >= eps ? real() : 0 at line 62 (generating result)
-vector<int> multiply(vector<int> const& a, vector<int> const& b) {
-    vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
+
+vec<int> multiply(vec<int> const& a, vec<int> const& b) {
+    vec<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
     int n = 1;
     while (n < a.size() + b.size()) 
         n <<= 1;
@@ -57,56 +48,39 @@ vector<int> multiply(vector<int> const& a, vector<int> const& b) {
         fa[i] *= fb[i];
     fft(fa, true);
 
-    vector<int> result(n);
+    vec<int> result(n);
     for (int i = 0; i < n; i++)
         result[i] = round(fa[i].real());
-/* add this for multiplying two long numbers
+    
+    
+    //* if multiplying two number
+    /*
     int carry = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
         result[i] += carry;
         carry = result[i] / 10;
         result[i] %= 10;
     }
-*/
+    */
+        
     return result;
 }
 
-int main(){
-    scanf("%s%s", sa, sb); // multiply two bin integers
-    lena = strlen(sa), lenb = strlen(sb);
-    while(n < lena + lenb) n *= 2; // reserving space for multiplication 
-    vec<int> a(n, 0), b(n, 0);
-    for(int i = 0; i < lena; i++)
-	    a[i] = sa[lena - 1 - i] - '0');
-    for(int i = 0; i < lenb; i++)
-	    b[i] = sb[lenb - 1 - i] - '0');
-
-    vec<int> res = multiply(a, b);
-    for(int i = res[lena + lenb - 1] ? lena + lenb - 1: lena + lenb - 2; i >= 0; i--)
-	    putchar('0' + res[i]);
-    putchar('\n') return 0;
+int main() {
+    //* vector from LSB to MSB.
+    vec<int> a = {1, 3, 2}, b = {5, 4, 7};
+    
+    auto ret = multiply(a, b);
+    for (auto i : ret)
+        cout << i << ' ';
 }
 
-
-// NTT (Number theoretic transform)
-
+//* compute the coefficients modulo some prime number p.
+/*
 const int mod = 7340033;
 const int root = 5;
 const int root_1 = 4404020;
 const int root_pw = 1 << 20;
-
-int inverse(int a, int m){ // returns a^-1 mod m, 0 if not found
-    int x, y;
-    int g = extended_euclidean(a, m, x, y);
-    if (g != 1) {
-        return 0;
-    }
-    else {
-        x = (x % m + m) % m;
-        return x;
-    }
-
-}
 
 void fft(vector<int> & a, bool invert) {
     int n = a.size();
@@ -143,3 +117,4 @@ void fft(vector<int> & a, bool invert) {
             x = (int)(1LL * x * n_1 % mod);
     }
 }
+*/
