@@ -8,7 +8,7 @@ struct tarjan_for_SCC{
     stack<int> st; // for SccID
     vector<bool> inSt;
     vector<vector<int>> conG; // contracted graph
-    int timeStamp, sccNum;
+    int Time, sccNum;
     void init(int n = 1){
         G.assign(n, vec<int>());
         dfn.assign(n, 0);
@@ -18,13 +18,13 @@ struct tarjan_for_SCC{
         while(!st.empty())
             st.pop();
         conG.clear();
-        sccNum = timeStamp = 0;
+        sccNum = Time = 0;
     }
     void addEdge(int from, int to){
         G[from].eb(to);
     }
     void DFS(int u){ //call DFS(u) for all unvisited vertex 
-        dfn[u] = low[u] = ++timeStamp; //timestamp > 0
+        dfn[u] = low[u] = ++Time; //timestamp > 0
         st.push(u);
         inSt[u] = true;
 
