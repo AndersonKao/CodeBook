@@ -82,6 +82,19 @@ const int root = 5;
 const int root_1 = 4404020;
 const int root_pw = 1 << 20;
 
+int inverse(int a, int m){ // returns a^-1 mod m, 0 if not found
+    int x, y;
+    int g = ext_gcd(a, m, x, y);
+    if (g != 1) {
+        return 0;
+    }
+    else {
+        x = (x % m + m) % m;
+        return x;
+    }
+
+}
+
 void fft(vector<int> & a, bool invert) {
     int n = a.size();
 
