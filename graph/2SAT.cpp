@@ -12,11 +12,18 @@ struct twoSAT{
     int n;
     vector<bool> value;
     void init(int nterm){
-        this->n= nterm;
+        this->n = nterm;
         mK.init(nterm * 2);
     }
     void addEdge(int u, int v){
         mK.addEdge(u, v);
+    }
+    int rv(int a) {
+        if (a >= n) return a - n;
+        return a + n;
+    }
+    void add_clause(int a, int b) { // a or b
+        addEdge(rv(a), b), addEdge(rv(b), a);
     }
     void run(){
         mK.run();
