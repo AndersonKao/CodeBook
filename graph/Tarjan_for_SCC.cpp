@@ -9,8 +9,7 @@ struct tarjan_for_SCC{
     vector<bool> inSt;
     vector<vector<int>> conG; // contracted graph
     int Time, sccNum;
-    void init(int n = 1){ // 1-base
-        n++;
+    void init(int n = 1){ // 0-base
         G.assign(n, vec<int>());
         dfn.assign(n, 0);
         low.assign(n, 0);
@@ -44,17 +43,17 @@ struct tarjan_for_SCC{
         }
         if(dfn[u] == low[u]){
             int v;
-            sccNum++;
             do{
                 v = st.top(), st.pop();
                 sccID[v] = sccNum, inSt[v] = false;
             } while (v != u);
+            sccNum++;
         }
     }
     // generate induced graph.
     void generateReG(){
-        conG.assign(sccNum+1, vec<int>());
-        for (int u = 1; u < G.size(); u++){
+        conG.assign(sccNum, vec<int>());
+        for (int u = 0; u < G.size(); u++){
             for(int v: G[u]){
                 if(sccID[u] == sccID[v])
                     continue;
