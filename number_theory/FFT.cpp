@@ -68,16 +68,18 @@ vec<int> multiply(vec<int> const& a, vec<int> const& b) {
 }
 
 int main() {
-    string sa,sb; cin >> sa >> sb; 
-    int n = 1, lena = sa.length(), lenb = sb.length();
-    while(n < sa.length() + b.length()) n *= 2; // reserving space for multiplication
-    
-    vec<int> a(n, 0), b(n, 0);  //* vector from LSB to MSB.
-    for(int i = 0; i < sa.length(); i++) a[i] = sa[lena - 1 - i] - '0');
-    for(int i = 0; i < sb.length(); i++) b[i] = sb[lenb - 1 - i] - '0');
+    string sa,sb;
+	cin >> sa >> sb;
+
+	int na = sa.size(), nb = sb.size();
+		
+    vec<int> a(na, 0), b(nb, 0);  //* vector from LSB to MSB.
+	
+    for(int i = 0; i < na; i++) a[i] = sa[na - 1 - i] - '0';
+    for(int i = 0; i < nb; i++) b[i] = sb[nb - 1 - i] - '0';
     
     vec<int> res = multiply(a, b);
-    for(int i = res[lena + lenb - 1] ? lena + lenb - 1: lena + lenb - 2; i >= 0; i--)
+    for(int i = res[na + nb - 1] ? na + nb - 1: na + nb - 2; i >= 0; i--)
        cout << res[i];
 }
 
