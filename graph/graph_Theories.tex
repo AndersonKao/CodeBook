@@ -1,5 +1,6 @@
 \subsubsection{Definition}
 \begin{itemize}
+	\setlength\itemsep{-0.5em}
 	\item Vertex Cover: Pick some vertices s.t. each edge covered by a least one vertex
 	\item Matching : Pick some edge s.t. no two edge share same vertex.
 	\item Indepentent vertex Set: Pick some vertices s.t. no two vertices are neighbor.
@@ -17,4 +18,21 @@ In any bipartite graph, the complement of mimimum vertex cover is a maximum Inde
 \subsubsection{Minimum Weighted Vertex Cover}
 
 二分圖的minimum weighted vertex cover可以透過最大流求出，建模方式如下：source 連向所有左邊的點，capacity是點權，所有右邊的點連向sink，capacity是點權，對於二分圖中原本有的邊，從左邊連向右邊，capacity為INF。可以透過此圖的 min cut構造出 vertex cover，而min cut可以透過此圖的 max flow 求出。
+
+\subsubsection{Biconnected Component}
+If a Biconnected component is 2-connected
+\begin{enumerate}
+	\setlength\itemsep{-0.5em}
+	\item it has a least three vertices. (special case: 2 vertex and one edge)
+	\item 表示任兩點間存在兩條互斥路徑(環)。且認兩邊可以找到一個環包含兩邊
+	\item 若該連通分量有一個奇環則雙連通分量的任一點都至少一個奇環覆蓋
+\end{enumerate}
+\subsubsection{DFS Tree}
+\begin{enumerate}
+	\setlength\itemsep{-0.5em}
+	\item The back-edges of the graph all connect a vertex with its descendant in the spanning tree.
+	\item A back-edge is never a bridge. The edge between u and its parent is a bridge if and only if $\mathrm{dp}[u] = 0$ ($\mathrm{dp}[u] = (\text{\# of back-edges going up from } u) - (\text{\# of back-edges going down from } u) + \underset{v \text{ is a child of } u}{\sum \mathrm{dp}[v]}$.
+)
+\end{enumerate}
+
 
