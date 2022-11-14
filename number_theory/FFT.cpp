@@ -34,6 +34,7 @@ void fft(vec<cd>& a, bool invert) {
     }
 }
 
+// if doing on real number polynomial, just change int to double. And check real() >= eps ? real() : 0 at line 62 (generating result)
 vec<int> multiply(vec<int> const& a, vec<int> const& b) {
     vec<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
     int n = 1;
