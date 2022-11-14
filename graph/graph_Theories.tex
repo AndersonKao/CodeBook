@@ -5,7 +5,6 @@
 	\item Matching : Pick some edge s.t. no two edge share same vertex.
 	\item Indepentent vertex Set: Pick some vertices s.t. no two vertices are neighbor.
 	\item edge(vertex) cactus: A graph every edge(vertex) belongs to at most one simple cycle.
-		\item 
 \end{itemize}
 
 
@@ -34,15 +33,15 @@ If a Biconnected component is 2-connected
 	\setlength\itemsep{-0.5em}
 	\item The back-edges of the graph all connect a vertex with its descendant in the spanning tree.
 	\item A back-edge is never a bridge. The edge between u and its parent is a bridge if and only if $\mathrm{dp}[u] = 0$ ( $\mathrm{dp}[u] = (\text{\# of back-edges going up from } u) - (\text{\# of back-edges going down from } u) + \underset{v \text{ is a child of } u}{\sum \mathrm{dp}[v]} )$.
-	\item In DFS tree of a cactus, for any span-edge, at most one back-edge passes over it. Each back-edge forms a simple cycle together with the span-edges it passes over. There's no other simple cycles;
+	\item In DFS tree of a \emph{cactus}, for any span-edge, at most one back-edge passes over it. Each back-edge forms a simple cycle together with the span-edges it passes over. There's no other simple cycles. ( contract $\mathrm{cycleId}[v] != v \&\& \text{there is no back-edge going down from v}$ )
 \end{enumerate}
 \subsubsection{Euler Tour}
 \begin{enumerate}
 	\setlength\itemsep{-0.5em}
-	\item An undirected graph has an Eulerian cycle iff $deg(u)$ is even for all $u$, and all vertices with $deg(u)!=0$ belong to a connected component.
-	\item An undirected graph can be decomposed into edge-disjoint cycles if and only if all of its vertices have even degree. So, a graph has an Eulerian cycle if and only if it can be decomposed into edge-disjoint cycles and its nonzero-degree vertices belong to a single connected component.
-	\item An undirected graph has an Eulerian trail if and only if exactly zero or two vertices have odd degree, and all of its vertices with nonzero degree belong to a single connected component
-	\item A directed graph has an Eulerian cycle if and only if every vertex has equal in degree and out degree, and all of its vertices with nonzero degree belong to a single strongly connected component. Equivalently, a directed graph has an Eulerian cycle if and only if it can be decomposed into edge-disjoint directed cycles and all of its vertices with nonzero degree belong to a single strongly connected component.
-	\item A directed graph has an Eulerian trail if and only if at most one vertex has $(out-degree) − (in-degree) = 1$, at most one vertex has $(in-degree) − (out-degree) = 1$, every other vertex has equal in-degree and out-degree, and all of its vertices with nonzero degree belong to a single connected component of the underlying undirected graph.
+	\item An undirected graph has an Eulerian cycle iff $deg(u)$ is even for all $u$, and all vertices with $deg(u)!=0$ belong to a c.c..
+	\item An undirected graph can be decomposed into edge-disjoint cycles iff all $deg(u)$ is even . So, a graph has an Eulerian cycle iff it can be decomposed into edge-disjoint cycles and its nonzero-degree vertices belong to a single c.c.
+	\item An undirected graph has an Eulerian trail iff exactly zero or two vertices have odd degree, and all of its vertices with nonzero degree belong to a single c.c.
+	\item A directed graph has an Eulerian cycle iff every vertex has equal in-deg and out-deg, and all vertices with nonzero degree belong to a single SCC. Equivalently, a directed graph has an Eulerian cycle iff it can be decomposed into edge-disjoint directed cycles and all with nonzero degree belong to a single SCC.
+	\item A directed graph has an Eulerian trail iff at most one vertex has $(\text{out-deg}) − (\text{in-deg}) = 1$, at most one vertex has $(\text{in-deg}) − (\text{out-deg}) = 1$, every other vertex has equal in-degree and out-degree, and all vertices with nonzero degree belong to a single c.c. of the underlying undirected graph.
 \end{enumerate}
 
