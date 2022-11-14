@@ -31,8 +31,15 @@ If a Biconnected component is 2-connected
 \begin{enumerate}
 	\setlength\itemsep{-0.5em}
 	\item The back-edges of the graph all connect a vertex with its descendant in the spanning tree.
-	\item A back-edge is never a bridge. The edge between u and its parent is a bridge if and only if $\mathrm{dp}[u] = 0$ ($\mathrm{dp}[u] = (\text{\# of back-edges going up from } u) - (\text{\# of back-edges going down from } u) + \underset{v \text{ is a child of } u}{\sum \mathrm{dp}[v]}$.
-)
+	\item A back-edge is never a bridge. The edge between u and its parent is a bridge if and only if $\mathrm{dp}[u] = 0$ ( $\mathrm{dp}[u] = (\text{\# of back-edges going up from } u) - (\text{\# of back-edges going down from } u) + \underset{v \text{ is a child of } u}{\sum \mathrm{dp}[v]} )$.
 \end{enumerate}
-
+\subsubsection{Euler Tour}
+\begin{enumerate}
+	\setlength\itemsep{-0.5em}
+	\item An undirected graph has an Eulerian cycle if and only if every vertex has even degree, and all of its vertices with nonzero degree belong to a single connected component.
+	\item An undirected graph can be decomposed into edge-disjoint cycles if and only if all of its vertices have even degree. So, a graph has an Eulerian cycle if and only if it can be decomposed into edge-disjoint cycles and its nonzero-degree vertices belong to a single connected component.
+	\item An undirected graph has an Eulerian trail if and only if exactly zero or two vertices have odd degree, and all of its vertices with nonzero degree belong to a single connected component
+	\item A directed graph has an Eulerian cycle if and only if every vertex has equal in degree and out degree, and all of its vertices with nonzero degree belong to a single strongly connected component. Equivalently, a directed graph has an Eulerian cycle if and only if it can be decomposed into edge-disjoint directed cycles and all of its vertices with nonzero degree belong to a single strongly connected component.
+	\item A directed graph has an Eulerian trail if and only if at most one vertex has $(out-degree) − (in-degree) = 1$, at most one vertex has $(in-degree) − (out-degree) = 1$, every other vertex has equal in-degree and out-degree, and all of its vertices with nonzero degree belong to a single connected component of the underlying undirected graph.
+\end{enumerate}
 
