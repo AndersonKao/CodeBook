@@ -68,12 +68,17 @@ vec<int> multiply(vec<int> const& a, vec<int> const& b) {
 }
 
 int main() {
-    //* vector from LSB to MSB.
-    vec<int> a = {1, 3, 2}, b = {5, 4, 7};
+    string sa,sb; cin >> sa >> sb; 
+    int n = 1, lena = sa.length(), lenb = sb.length();
+    while(n < sa.length() + b.length()) n *= 2; // reserving space for multiplication
     
-    auto ret = multiply(a, b);
-    for (auto i : ret)
-        cout << i << ' ';
+    vec<int> a(n, 0), b(n, 0);  //* vector from LSB to MSB.
+    for(int i = 0; i < sa.length(); i++) a[i] = sa[lena - 1 - i] - '0');
+    for(int i = 0; i < sb.length(); i++) b[i] = sb[lenb - 1 - i] - '0');
+    
+    vec<int> res = multiply(a, b);
+    for(int i = res[lena + lenb - 1] ? lena + lenb - 1: lena + lenb - 2; i >= 0; i--)
+       cout << res[i];
 }
 
 //* compute the coefficients modulo some prime number p.
