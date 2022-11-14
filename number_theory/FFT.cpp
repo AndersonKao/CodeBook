@@ -69,10 +69,9 @@ vec<int> multiply(vec<int> const& a, vec<int> const& b) {
 
 int main() {
     string sa,sb;
-	cin >> sa >> sb;
+    cin >> sa >> sb;
 
-	int na = sa.size(), nb = sb.size();
-		
+    int na = sa.size(), nb = sb.size();
     vec<int> a(na, 0), b(nb, 0);  //* vector from LSB to MSB.
 	
     for(int i = 0; i < na; i++) a[i] = sa[na - 1 - i] - '0';
