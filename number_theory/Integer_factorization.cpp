@@ -17,3 +17,30 @@ vec<ll> trial_division4(ll n) {
 
     return fac;
 }
+// get all factorization of 1~n
+
+vec<ll> LPFs;
+void build(int n){
+    LPFs.assign(n + 1, 1);
+    for (int i = 2; i < n; i++)
+    {
+        if (LPFs[i] == 1){
+            LPFs[i] = i;
+            primes.emplace_back(i);
+        }
+        for (auto p: primes){
+            if (1LL * i * p > n) break;
+            LPFs[i * p] = i;
+            if (i % p == 0) break;
+        }
+    }
+}
+
+void print_prime_factor(ll x){
+    while(x != 1){
+        int factor = SPFs[x], cnt = 0;
+        for (; x % factor == 0; ++cnt)
+            x /= factor;
+        cout << factor << ": " << cnt << endl;
+    }
+}
