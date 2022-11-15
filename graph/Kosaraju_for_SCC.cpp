@@ -10,21 +10,17 @@ struct Kosaraju{
 
     void init(int N){
         NodeNum = N;
-        G.clear();
-        G.resize(N);
-        GT.clear();
-        GT.resize(N);
+        G.assign(N, vec<int>());
+        GT.assign(N, vec<int>());
         while(!st.empty())
             st.pop();
-        visited.clear();
-        visited.resize(N, false);
-        scc.clear();
-        scc.resize(N);
+        visited.assign(N, false);
+        scc.assign(N, 0);
         sccNum = 0;
     }
     void addEdge(int u, int v){
-        G[u].emplace_back(v);
-        GT[v].emplace_back(u);
+        G[u].eb(v);
+        GT[v].eb(u);
     }
     void DFS(bool isG, int u, int sccID = -1){
         visited[u] = true;
