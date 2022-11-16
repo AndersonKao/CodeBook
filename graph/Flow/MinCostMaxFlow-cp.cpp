@@ -1,78 +1,77 @@
-struct Edge
-{
-    int from, to, capacity, cost;
-};
-vector<Edge> edges;
-vector<vector<int>> adj, cost, capacity;
+struct CostFlow {
+    static const int MAXN = 350;
+    const ll INF = 1ll<<60;
+    
+    struct Edge {
+        int to, r;
+        ll rest, c;
+        
+        Edge() {}
+        Edge(int to, int r, ll rest, ll c) : to(to), r(r), rest(rest), c(c) {}
+    };
 
-const int INF = 1e9;
-
-void shortest_paths(int n, int v0, vector<int>& d, vector<int>& p) {
-    d.assign(n, INF);
-    d[v0] = 0;
-    vector<bool> inq(n, false);
-    queue<int> q;
-    q.push(v0);
-    p.assign(n, -1);
-
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        inq[u] = false;
-        for (int v : adj[u]) {
-            if (capacity[u][v] > 0 && d[v] > d[u] + cost[u][v]) {
-                d[v] = d[u] + cost[u][v];
-                p[v] = u;
-                if (!inq[v]) {
-                    inq[v] = true;
-                    q.push(v);
+    int n, pre[MAXN], preL[MAXN];
+    bool inq[MAXN];
+    ll dis[MAXN], fl, cost;
+    vec<Edge> G[MAXN];
+    
+    void init() {
+        for (int i = 0; i < MAXN; i++) G[i].clear();
+    }
+    
+    void add_edge(int u, int v, ll rest, ll c) {
+        G[u].eb(v, G[v].size(), rest, c);
+        G[v].eb(u, G[u].size()-1, 0, -c);
+    }
+    
+    p<ll> flow(int s, int t) {
+        fl = cost = 0;
+        
+        while (true) {
+            fill(dis, dis+MAXN, INF);
+            fill(inq, inq+MAXN, 0);
+            dis[s] = 0;
+            
+            queue<int> que;
+            que.emplace(s);
+            while (!que.empty()) {
+                int u = que.front();
+                que.pop();
+                
+                inq[u] = 0;
+                for (int i = 0; i < G[u].size(); i++) {
+                    int v = G[u][i].to;
+                    ll w = G[u][i].c;
+                    
+                    if (G[u][i].rest > 0 and dis[v] > dis[u] + w) {
+                        pre[v] = u;
+                        preL[v] = i;
+                        dis[v] = dis[u] + w;
+                        if (!inq[v]) {
+                            inq[v] = 1;
+                            que.emplace(v);
+                        }
+                    }
                 }
             }
+            
+            if (dis[t] == INF) break;
+            ll tf = INF;
+            for (int v = t, u, l; v != s; v = u) {
+                u = pre[v]; l = preL[v];
+                tf = min(tf, G[u][l].rest);
+            }
+            
+            for (int v = t, u, l; v != s; v = u) {
+                u = pre[v]; l = preL[v];
+                G[u][l].rest -= tf;
+                G[v][G[u][l].r].rest += tf;
+            }
+            
+            cost += tf * dis[t];
+            fl += tf;
         }
+        
+        return {fl, cost};
     }
-}
-
-int min_cost_flow(int N, vector<Edge>& edges, int K, int s, int t) {
-    adj.assign(N, vector<int>());
-    cost.assign(N, vector<int>(N, 0));
-    capacity.assign(N, vector<int>(N, 0));
-    for (Edge& e : edges) {
-        adj[e.from].push_back(e.to);
-        adj[e.to].push_back(e.from);
-        cost[e.from][e.to] = e.cost;
-        cost[e.to][e.from] = -e.cost;
-        capacity[e.from][e.to] = e.capacity;
-    }
-
-    int flow = 0;
-    int cost = 0;
-    vector<int> d, p;
-    while (flow < K) {
-        shortest_paths(N, s, d, p);
-        if (d[t] == INF)
-            break;
-
-        // find max flow on that path
-        int f = K - flow;
-        int cur = t;
-        while (cur != s) {
-            f = min(f, capacity[p[cur]][cur]);
-            cur = p[cur];
-        }
-
-        // apply flow
-        flow += f;
-        cost += f * d[t];
-        cur = t;
-        while (cur != s) {
-            capacity[p[cur]][cur] -= f;
-            capacity[cur][p[cur]] += f;
-            cur = p[cur];
-        }
-    }
-
-    if (flow < K)
-        return -1;
-    else
-        return cost;
-}
+};
