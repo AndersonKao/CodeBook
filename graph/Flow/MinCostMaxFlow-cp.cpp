@@ -1,4 +1,4 @@
-struct CostFlow {
+struct CostFlow { // Belmen-Ford O(V^2E^2)
     static const int MAXN = 350;
     const ll INF = 1ll<<60;
     
