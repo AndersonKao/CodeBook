@@ -36,7 +36,6 @@ rb_tree_tag,
 tree_order_statistics_node_update>
 ;
 using order_map= tree<int, int, less<int>, rb_tree_tag, tree_order_statistics_node_update>;
- 
 
 void test(){
     int x;
@@ -73,3 +72,8 @@ void test(){
     cout<<X.order_of_key(4)<<endl;   // 2
     cout<<X.order_of_key(400)<<endl; // 5
 }
+
+//* A drawback of using less_equal instead of less is that lower_bound works as upper_bound
+
+//* order_of_key: The number of items in a set that are strictly smaller than k
+//* find_by_order: It returns an iterator to the ith largest element
