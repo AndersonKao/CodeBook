@@ -16,33 +16,41 @@ line segs[4 * maxx];
 /*
 a line is  y = k * x + b, using point to represent it.
 */
-void add_line(line nw, int idx = 1, int l = 0, int r = maxx)
+void add_line(line cur, int idx = 1, int l = 0, int r = maxx)
 {
-    int m = (l + r) >> 1;
-    bool lef = nw.y(l) < segs[idx].y(l);
-    bool mid = nw.y(m) < segs[idx].y(m);
-    if(mid) {
-        swap(line[idx], nw);
-    }
-    if(l == r) {
+    if(l == r){
+        if(cur.y(l) < segs[idx].y(l)){
+            segs[idx] = cur;
+        }
         return;
-    } else if(lef != mid){
-        add_line(nw, 2 * idx, l, m);
-    } else {
-        add_line(nw, 2 * idx + 1, m + 1, r);
+    }
+    int mid = (l + r) >> 1;
+    if(cur.m > segs[idx].m){
+        swap(cur, segs[idx]);
+    }
+    if(cur.y(mid) < segs[idx].y(mid)){
+        swap(cur, segs[idx]);
+        add_line(cur, idx * 2, l, mid);
+    }
+    else{
+        add_line(cur, idx * 2 + 1, mid + 1, r);
     }
 }
 
 // get minimum in some line x;
 ll query(int x, int idx = 1, int l = 0, int r = maxx)
 {
-    int m = (l + r) / 2;
-    if(l == r) {
-        return line[idx].y(x);
-    } else if(x < m) {
-        return min(line[idx].y(x), get(x, 2 * idx, l, m));
-    } else {
-        return min(line[idx].y(x), get(x, 2 * idx + 1, m + 1, r));
+    ll cur = segs[idx].y(x);
+    if(l == r){
+        return cur;
+    }
+    int mid = (l + r) >> 1;
+    if (x <= mid)
+    {
+        return min(cur, query(x, idx * 2, l, mid));
+    }
+    else{
+        return min(cur, query(x, idx * 2 + 1, mid + 1, r));
     }
 }
 
