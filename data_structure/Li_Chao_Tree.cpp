@@ -41,17 +41,13 @@ void add_line(line cur, int idx = 1, int l = 0, int r = maxx)
 ll query(int x, int idx = 1, int l = 0, int r = maxx)
 {
     ll cur = segs[idx].y(x);
-    if(l == r){
+    if(l == r)
         return cur;
-    }
     int mid = (l + r) >> 1;
     if (x <= mid)
-    {
         return min(cur, query(x, idx * 2, l, mid));
-    }
-    else{
+    else
         return min(cur, query(x, idx * 2 + 1, mid + 1, r));
-    }
 }
 
 // if the line slope is non-increasing. and query(x) is increasing.

@@ -1,12 +1,11 @@
 // for each j store number of pair (i, j) such that Xi <= Xj and Yi <= Yj and Zi <= Zj
 struct point{
-        int x, y, z;
-        int idx;
-        point(){x = y = z = 0;}
-        point(int a, int b, int c, int id):x(a), y(b), z(c), idx(id){}
-        bool operator==(const point &a){
-                return x == a.x && y == a.y && z == a.z;
-        }
+    int x, y, z, idx;
+    point(){x = y = z = 0;}
+    point(int a, int b, int c, int id):x(a), y(b), z(c), idx(id){}
+    bool operator==(const point &a){
+            return x == a.x && y == a.y && z == a.z;
+    }
 };
 const int maxn = 100001;
 vec<point> pts;
@@ -29,9 +28,9 @@ void cdq(int l, int r){
     int cpidx = 0, lid = l, rid = mid + 1;
     for(rid = mid+1; rid <= r; rid++){
         while(lid <= mid && pts[lid].y <= pts[rid].y){
-                add(upper_bound(al(arr), pts[lid].z) - arr.begin(), 1);
-                staticArr[cpidx++] = pts[lid];
-                lid++;
+            add(upper_bound(al(arr), pts[lid].z) - arr.begin(), 1);
+            staticArr[cpidx++] = pts[lid];
+            lid++;
         }
         ans[pts[rid].idx] += query(upper_bound(al(arr), pts[rid].z) - arr.begin());
         staticArr[cpidx++] = pts[rid];
@@ -42,13 +41,14 @@ void cdq(int l, int r){
 int main(){
     int n, idx = 0; cin >> n; fill(ans, ans+n, 0); pts.resize(n);
     for(point& e: pts)
-            cin >> e.x >> e.y >> e.z; e.idx = idx++;
+        cin >> e.x >> e.y >> e.z; e.idx = idx++;
     auto cmp_1 = [](point&a , point &b){ return a.x == b.x ? (a.y == b.y ? a.z < b.z : a.y < b.y ): a.x < b.x; };
     sort(al(pts), cmp_1);
     for(int i = n-2; i >= 0 ; i--){
-            if(pts[i] == pts[i+1]){
-                    ans[pts[i].idx] = ans[pts[i+1].idx] + 1; // calculate ans that (pts[i] == pts[j] && i > j) as for ans (pts[i] == pts[j] && i < j) will be calculate in normal process
-            }
+        if(pts[i] == pts[i+1]){
+            ans[pts[i].idx] = ans[pts[i+1].idx] + 1; 
+// calculate ans that (pts[i] == pts[j] && i > j) as for ans (pts[i] == pts[j] && i < j) will be calculate in normal process
+        }
     }
     cdq(0, n-1);
 }
