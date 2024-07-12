@@ -4,7 +4,6 @@
 .vscode/
 *.swp
 Codebook.log
-Codebook.pdf
 *.aux
 Codebook.aux
 Codebook.toc
