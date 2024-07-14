@@ -1,11 +1,8 @@
-//O(nlgn) to build suffix array
-//wait for O(n) version
-vector<int> SA(string s) {
-	s = s + "$";
+//O(nlgn) to build suffix array(sort cyclic shifts)
+vector<int> sort_cyclic_shifts(string & s) {
 	int n = (int)s.size();
 	const int alphabet = 256;
-	vector<int> c(n), p(n), cnt(max(n, alphabet));
-	fill(cnt.begin(), cnt.end(), 0);
+	vector<int> c(n), p(n), cnt(max(n, alphabet), 0);
 	
 	for(int i=0;i<n;i++) cnt[s[i]]++;
 	for(int i=1;i<alphabet;i++) cnt[i]+=cnt[i-1];
@@ -19,9 +16,9 @@ vector<int> SA(string s) {
 	}
  
 	vector<int> pn(n), cn(n);
-	for(int h=1;h<n;h<<=1) {
-		for(int i=0;i<n;i++) {
-			pn[i] = p[i] - h;
+	for(int h = 0; (1 << h) < n; h++){
+		for(int i = 0; i < n; i++) {
+			pn[i] = p[i] - (1 << h);
 			if(pn[i] < 0) pn[i]+=n;
 		}
 		fill(cnt.begin(), cnt.begin() + classes, 0);
@@ -33,14 +30,22 @@ vector<int> SA(string s) {
 		cn[p[0]] = 0;
 		classes = 1;
 		for(int i=1;i<n;i++) {
-			pii cur = pii(c[p[i]], c[(p[i] + h) % n]);
-			pii prev = pii(c[p[i-1]], c[(p[i-1] + h) %n]);
+			pii cur = pii(c[p[i]], c[(p[i] + (1 << h)) % n]);
+			pii prev = pii(c[p[i-1]], c[(p[i-1] + (1 << h)) %n]);
 			if(cur != prev) classes++;
 			cn[p[i]] = classes - 1;
 		}
 		c.swap(cn);
 	}
 	return p;
+}
+
+vector<int> suffix_array_construction(string s){
+	s += "$";
+	vector<int> sorted_shifts = sort_cyclic_shifts(s);
+	sorted_shifts.erase(sorted_shifts.begin());
+	return sorted_shifts;
+
 }
 
 //O(n) to build lcp array
