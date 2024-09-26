@@ -42,3 +42,5 @@ $ xelatex Codebook.tex && xelatex Codebook.tex
 	5. [ ] Nearest pair of points
 8. Miscelllaneous
 	1. [Fast-Fourier Transform](https://cp-algorithms.com/algebra/fft.html#discrete-fourier-transform)
+9. Tree
+    1. [ ]Heavy-Light decomposition organization 
