@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+// O((V+E)VE) ，簡單寫成 O(VE²)
 struct Edge{
     int from, to, cap, flow;
     Edge(int u, int v, int c, int f):from(u), to(v), cap(c), flow(f){}

@@ -1,6 +1,4 @@
-// 樹上依賴背包問題
-// 上下界優化 Time complexity = O(NM)
-// 另有Postorder 的順序做DP也能做到O(NM)
+// 樹上依賴背包問題的上下界優化 Time complexity = O(NM)，另有Postorder 的順序做DP也能做到O(NM)
 void dfs(int u)
 {
     siz[u]=1;
