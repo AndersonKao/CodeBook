@@ -1,6 +1,4 @@
-// by jinkela
-// 最大圖匹配
-//  O(V²(V+E)) 
+// by jinkela 最大圖匹配 O(V²(V+E)) 
 #define MAXN 505
 int n; //1-base
 vector<int> g[MAXN];
